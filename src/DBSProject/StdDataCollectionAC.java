@@ -393,7 +393,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
             }
             con2.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
         
         }

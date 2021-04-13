@@ -484,7 +484,7 @@ public class Guest extends javax.swing.JFrame {
 
             con.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed

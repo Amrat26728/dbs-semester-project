@@ -478,7 +478,7 @@ public class AdminFrame extends javax.swing.JFrame {
         }
         
        }catch(SQLException e){
-           e.printStackTrace();
+           JOptionPane.showMessageDialog(null,e);
        }
         
     }//GEN-LAST:event_deleteacrecordActionPerformed
@@ -557,7 +557,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
                 con.close();
             }catch(SQLException e){
-                e.printStackTrace();
+                JOptionPane.showMessageDialog(null,e);
             }
         }
     }//GEN-LAST:event_searchacrecordActionPerformed
@@ -602,7 +602,7 @@ public class AdminFrame extends javax.swing.JFrame {
              
              con.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
         
     }//GEN-LAST:event_viewacdataActionPerformed
@@ -647,7 +647,7 @@ public class AdminFrame extends javax.swing.JFrame {
              
              con.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
         
     }//GEN-LAST:event_viewnonacdataActionPerformed
@@ -682,7 +682,7 @@ public class AdminFrame extends javax.swing.JFrame {
              
              con.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
         
     }//GEN-LAST:event_RoomsActionPerformed
@@ -745,7 +745,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     con.close();
                     JOptionPane.showMessageDialog(null, "AC rooms added", "Information message", JOptionPane.INFORMATION_MESSAGE);
                }catch(SQLException e){
-                   e.printStackTrace();
+                   JOptionPane.showMessageDialog(null,e);
                }
             }
         
@@ -810,7 +810,7 @@ public class AdminFrame extends javax.swing.JFrame {
                     con.close();
                     JOptionPane.showMessageDialog(null, "Non AC rooms added", "Information message", JOptionPane.INFORMATION_MESSAGE);
                }catch(SQLException e){
-                   e.printStackTrace();
+                   JOptionPane.showMessageDialog(null,e);
                }
             }
         
@@ -887,7 +887,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
             con.close();
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
         
        }
@@ -953,7 +953,7 @@ public class AdminFrame extends javax.swing.JFrame {
         }
         
        }catch(SQLException e){
-           e.printStackTrace();
+           JOptionPane.showMessageDialog(null,e);
        }
         
     }//GEN-LAST:event_deletenonacrecordActionPerformed

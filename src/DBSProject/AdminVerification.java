@@ -173,7 +173,7 @@ public class AdminVerification extends javax.swing.JFrame {
                 passworderror.setVisible(true);
             }
         }catch(SQLException e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,e);
         }
        
     }//GEN-LAST:event_loginbtnActionPerformed
