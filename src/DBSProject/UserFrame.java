@@ -102,22 +102,22 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void acroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acroombtnActionPerformed
         
-        this.dispose();
         new StdDataCollectionAC().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_acroombtnActionPerformed
 
     private void noacroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noacroomActionPerformed
         
-        this.dispose();
         new StdDataCollectionNonAC().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_noacroomActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
-        this.dispose();
         new MainFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_jLabel1MouseClicked
 

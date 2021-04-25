@@ -58,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         mainframepanel.add(adminaccess);
-        adminaccess.setBounds(850, 300, 150, 30);
+        adminaccess.setBounds(920, 300, 150, 30);
 
         studentaccess.setBackground(new java.awt.Color(153, 204, 255));
         studentaccess.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -70,7 +70,7 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         mainframepanel.add(studentaccess);
-        studentaccess.setBounds(850, 410, 150, 30);
+        studentaccess.setBounds(920, 400, 150, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MainFrame.jpg"))); // NOI18N
         mainframepanel.add(jLabel1);
@@ -90,15 +90,15 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void studentaccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentaccessActionPerformed
         
-        this.dispose();
         new UserFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_studentaccessActionPerformed
 
     private void adminaccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminaccessActionPerformed
         
-        this.dispose();
         new AdminVerification().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_adminaccessActionPerformed
 

@@ -298,25 +298,33 @@ public class Guest extends javax.swing.JFrame {
 
     private void allowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allowActionPerformed
        
-        String stdrollno=rollnotf.getText();
-        String g1rollno=g1rollnotf.getText();
-        String g1name=g1nametf.getText();
-        double g1contact=Double.parseDouble(g1contacttf.getText());
-        String g2rollno=g2rollnotf.getText();
-        String g2name=g2nametf.getText();
-        double g2contact=Double.parseDouble(g2contacttf.getText());
-        String dt=dateformat.format(date);
+        if(g1contacttf.getText().isEmpty() || g2contacttf.getText().isEmpty() || stdrollno.getText().isEmpty() || g1nametf.getText().isEmpty() || g2nametf.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Something is wrong while giving data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String stdrollno=rollnotf.getText();
+            String g1rollno=g1rollnotf.getText();
+            String g1name=g1nametf.getText();
+            double g1contact=Double.parseDouble(g1contacttf.getText());
+            String g2rollno=g2rollnotf.getText();
+            String g2name=g2nametf.getText();
+            double g2contact=Double.parseDouble(g2contacttf.getText());
+            String dt=dateformat.format(date);
+
+            try{
+                Connection con2=new DBConnection().getConnection();
+                Statement s=con2.createStatement();
+                s.executeQuery("insert into guest_data(std_roll_no, guest_1_roll_no, guest_1_name, guest_1_contact_no, guest_2_roll_no, guest_2_name, guest_2_contact_no, entry_date) values ('"+
+                        stdrollno+"','"+g1rollno+"','"+g1name+"','"+g1contact+"','"+g2rollno+"','"+g2name+"','"+g2contact+"','"+dt+"')");
+                s.executeQuery("commit");
+                con2.close();
+                JOptionPane.showMessageDialog(null, "Data Saved");
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null,e);
+            }
         
-        try{
-            Connection con2=new DBConnection().getConnection();
-            Statement s=con2.createStatement();
-            s.executeQuery("insert into guest_data(std_roll_no, guest_1_roll_no, guest_1_name, guest_1_contact_no, guest_2_roll_no, guest_2_name, guest_2_contact_no, entry_date) values ('"+
-                    stdrollno+"','"+g1rollno+"','"+g1name+"','"+g1contact+"','"+g2rollno+"','"+g2name+"','"+g2contact+"','"+dt+"')");
-            s.executeQuery("commit");
-            con2.close();
-            JOptionPane.showMessageDialog(null, "Data Saved");
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e);
         }
         
     }//GEN-LAST:event_allowActionPerformed
@@ -327,8 +335,8 @@ public class Guest extends javax.swing.JFrame {
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
-        this.dispose();
         new AdminFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_backMouseClicked
 

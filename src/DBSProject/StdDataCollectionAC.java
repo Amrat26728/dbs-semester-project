@@ -264,15 +264,20 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
 
-        
-        String Roll_no=rollnotf.getText();
-        
-        boolean check=false;
-        int counter1=0;
-        int counter2=0;
-        
-        if(!Roll_no.isEmpty())
+       
+        if(rollnotf.getText().isEmpty() || nametf.getText().isEmpty() || fnametf.getText().isEmpty() || contacttf.getText().isEmpty() || countrytf.getText().isEmpty() || provincetf.getText().isEmpty() || districttf.getText().isEmpty() || addresstf.getText().isEmpty() || emailtf.getText().isEmpty() || emergcontacttf.getText().isEmpty() )
         {
+            JOptionPane.showMessageDialog(null, "Something is wrong while giving data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else
+        {
+            String Roll_no=rollnotf.getText();
+        
+            boolean check=false;
+            int counter1=0;
+            int counter2=0;
+            
         
         try{
             Connection con2 = new DBConnection().getConnection();
@@ -397,10 +402,6 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         }
         
         }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Please enter roll no!",null,JOptionPane.WARNING_MESSAGE);
-        }
         
     }//GEN-LAST:event_submitActionPerformed
 
@@ -421,8 +422,8 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
-        this.dispose();
         new UserFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_backMouseClicked
 
@@ -520,7 +521,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         
             char ch=evt.getKeyChar();
             
-           if(Character.isDigit(ch) || Character.isWhitespace(ch) || Character.isISOControl(ch))
+           if(Character.isDigit(ch) || Character.isISOControl(ch))
            {
                contacttf.setEditable(true);
            }
@@ -535,7 +536,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         
             char ch=evt.getKeyChar();
             
-           if(Character.isDigit(ch) || Character.isWhitespace(ch) || Character.isISOControl(ch))
+           if(Character.isDigit(ch) || Character.isISOControl(ch))
            {
                emergcontacttf.setEditable(true);
            }

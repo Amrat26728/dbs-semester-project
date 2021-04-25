@@ -276,14 +276,15 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void submitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitActionPerformed
 
-      
-        String Roll_no=rollnotf.getText();
-       
-        
-        boolean check=false;
-        
-        if(!Roll_no.isEmpty()) 
+        if(rollnotf.getText().isEmpty() || nametf.getText().isEmpty() || fnametf.getText().isEmpty() || contacttf.getText().isEmpty() || countrytf.getText().isEmpty() || provincetf.getText().isEmpty() || districttf.getText().isEmpty() || addresstf.getText().isEmpty() || emailtf.getText().isEmpty() || emergcontacttf.getText().isEmpty() )
         {
+            JOptionPane.showMessageDialog(null, "Something is wrong while giving data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else
+        {
+            String Roll_no=rollnotf.getText();
+            boolean check=false;
         
         try{
             Connection con2 = new DBConnection().getConnection();
@@ -410,18 +411,13 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         }
         
        }
-        
-        else
-        {
-             JOptionPane.showMessageDialog(null, "Please enter roll no!",null,JOptionPane.WARNING_MESSAGE);
-        }
       
     }//GEN-LAST:event_submitActionPerformed
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
-        this.dispose();
         new UserFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_backMouseClicked
 

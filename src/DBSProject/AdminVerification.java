@@ -142,8 +142,8 @@ public class AdminVerification extends javax.swing.JFrame {
             {
                 usernameerror.setVisible(false);
                 passworderror.setVisible(false);
-                this.dispose();
                 new AdminFrame().setVisible(true);
+                this.dispose();
             }
             else if(usernametf.getText().equals("") && pstring.equals(""))
             {
@@ -180,8 +180,8 @@ public class AdminVerification extends javax.swing.JFrame {
 
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         
-        this.dispose();
         new MainFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_cancelActionPerformed
 

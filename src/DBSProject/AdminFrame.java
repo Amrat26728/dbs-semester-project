@@ -140,6 +140,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         searchacrecord.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchacrecord.setText("Search AC Record");
+        searchacrecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchacrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchacrecordActionPerformed(evt);
@@ -182,6 +183,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         Rooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         Rooms.setText("Rooms");
+        Rooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Rooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RoomsActionPerformed(evt);
@@ -192,6 +194,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         addacrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addacrooms.setText("Add AC Rooms");
+        addacrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addacrooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addacroomsActionPerformed(evt);
@@ -202,6 +205,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         addnonacrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         addnonacrooms.setText("Add Non AC Rooms");
+        addnonacrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         addnonacrooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addnonacroomsActionPerformed(evt);
@@ -212,6 +216,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         searchnonacrecord.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchnonacrecord.setText("Search NAC Record");
+        searchnonacrecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchnonacrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchnonacrecordActionPerformed(evt);
@@ -227,6 +232,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         deletenonacrecord.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         deletenonacrecord.setText("Delete NAC Record");
+        deletenonacrecord.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         deletenonacrecord.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deletenonacrecordActionPerformed(evt);
@@ -413,8 +419,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void guestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestActionPerformed
         
-        this.dispose();
         new Guest().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_guestActionPerformed
 
@@ -485,8 +491,8 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
-        this.dispose();
         new MainFrame().setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_backMouseClicked
 
