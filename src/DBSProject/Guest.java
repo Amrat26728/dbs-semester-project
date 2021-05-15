@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package DBSProject;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -66,7 +67,7 @@ public class Guest extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         scrollpane = new javax.swing.JScrollPane();
         guesttable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        guestlist = new javax.swing.JButton();
         guestmenulabel = new javax.swing.JPanel();
         guestdatalabel = new javax.swing.JLabel();
 
@@ -97,6 +98,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g1rollno);
         g1rollno.setBounds(120, 180, 60, 30);
 
+        g1rollnotf.setForeground(new java.awt.Color(153, 153, 153));
+        g1rollnotf.setText("Roll No");
+        g1rollnotf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g1rollnotfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g1rollnotfFocusLost(evt);
+            }
+        });
         g1rollnotf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g1rollnotfKeyPressed(evt);
@@ -114,6 +125,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g2rollno);
         g2rollno.setBounds(110, 380, 70, 30);
 
+        g2rollnotf.setForeground(new java.awt.Color(153, 153, 153));
+        g2rollnotf.setText("Roll No");
+        g2rollnotf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g2rollnotfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g2rollnotfFocusLost(evt);
+            }
+        });
         g2rollnotf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g2rollnotfKeyPressed(evt);
@@ -152,6 +173,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g1contact);
         g1contact.setBounds(80, 280, 100, 30);
 
+        g1contacttf.setForeground(new java.awt.Color(153, 153, 153));
+        g1contacttf.setText("Contact No");
+        g1contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g1contacttfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g1contacttfFocusLost(evt);
+            }
+        });
         g1contacttf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g1contacttfKeyPressed(evt);
@@ -165,6 +196,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g2details);
         g2details.setBounds(120, 320, 170, 30);
 
+        g2nametf.setForeground(new java.awt.Color(153, 153, 153));
+        g2nametf.setText("Name");
+        g2nametf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g2nametfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g2nametfFocusLost(evt);
+            }
+        });
         g2nametf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g2nametfKeyPressed(evt);
@@ -178,6 +219,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g2contact);
         g2contact.setBounds(90, 480, 90, 30);
 
+        g2contacttf.setForeground(new java.awt.Color(153, 153, 153));
+        g2contacttf.setText("Contact No");
+        g2contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g2contacttfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g2contacttfFocusLost(evt);
+            }
+        });
         g2contacttf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g2contacttfKeyPressed(evt);
@@ -198,6 +249,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(clear);
         clear.setBounds(280, 560, 130, 30);
 
+        g1nametf.setForeground(new java.awt.Color(153, 153, 153));
+        g1nametf.setText("Name");
+        g1nametf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                g1nametfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                g1nametfFocusLost(evt);
+            }
+        });
         g1nametf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 g1nametfKeyPressed(evt);
@@ -206,6 +267,16 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g1nametf);
         g1nametf.setBounds(180, 230, 240, 30);
 
+        rollnotf.setForeground(new java.awt.Color(153, 153, 153));
+        rollnotf.setText("Roll No of student");
+        rollnotf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rollnotfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                rollnotfFocusLost(evt);
+            }
+        });
         rollnotf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rollnotfActionPerformed(evt);
@@ -266,17 +337,17 @@ public class Guest extends javax.swing.JFrame {
         guesttablepanel.add(jPanel1);
         jPanel1.setBounds(0, 0, 660, 370);
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Show Table");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        guestlist.setBackground(new java.awt.Color(153, 204, 255));
+        guestlist.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        guestlist.setText("Show Guest List");
+        guestlist.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guestlist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                guestlistActionPerformed(evt);
             }
         });
-        guesttablepanel.add(jButton1);
-        jButton1.setBounds(250, 490, 180, 40);
+        guesttablepanel.add(guestlist);
+        guestlist.setBounds(250, 490, 180, 40);
 
         getContentPane().add(guesttablepanel);
         guesttablepanel.setBounds(530, 50, 660, 650);
@@ -457,7 +528,7 @@ public class Guest extends javax.swing.JFrame {
 
     }//GEN-LAST:event_clearActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void guestlistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guestlistActionPerformed
 
         boolean check=true;
 
@@ -495,7 +566,147 @@ public class Guest extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,e);
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_guestlistActionPerformed
+
+    private void rollnotfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollnotfFocusGained
+        
+        if(rollnotf.getText().equals("Roll No of student"))
+        {
+            rollnotf.setText("");
+            rollnotf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_rollnotfFocusGained
+
+    private void rollnotfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollnotfFocusLost
+        
+        if(rollnotf.getText().equals(""))
+        {
+            rollnotf.setText("Roll No of student");
+            rollnotf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_rollnotfFocusLost
+
+    private void g1rollnotfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1rollnotfFocusGained
+        
+        if(g1rollnotf.getText().equals("Roll No"))
+        {
+            g1rollnotf.setText("");
+            g1rollnotf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g1rollnotfFocusGained
+
+    private void g1rollnotfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1rollnotfFocusLost
+        
+        if(g1rollnotf.getText().equals(""))
+        {
+            g1rollnotf.setText("Roll No");
+            g1rollnotf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g1rollnotfFocusLost
+
+    private void g1nametfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1nametfFocusGained
+        
+        if(g1nametf.getText().equals("Name"))
+        {
+            g1nametf.setText("");
+            g1nametf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g1nametfFocusGained
+
+    private void g1nametfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1nametfFocusLost
+        
+        if(g1nametf.getText().equals(""))
+        {
+            g1nametf.setText("Name");
+            g1nametf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g1nametfFocusLost
+
+    private void g1contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1contacttfFocusGained
+        
+        if(g1contacttf.getText().equals("Contact No"))
+        {
+            g1contacttf.setText("");
+            g1contacttf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g1contacttfFocusGained
+
+    private void g1contacttfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1contacttfFocusLost
+        
+        if(g1contacttf.getText().equals(""))
+        {
+            g1contacttf.setText("Contact No");
+            g1contacttf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g1contacttfFocusLost
+
+    private void g2rollnotfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2rollnotfFocusGained
+        
+        if(g2rollnotf.getText().equals("Roll No"))
+        {
+            g2rollnotf.setText("");
+            g2rollnotf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g2rollnotfFocusGained
+
+    private void g2rollnotfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2rollnotfFocusLost
+        
+        if(g2rollnotf.getText().equals(""))
+        {
+            g2rollnotf.setText("Roll No");
+            g2rollnotf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g2rollnotfFocusLost
+
+    private void g2nametfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2nametfFocusGained
+        
+        if(g2nametf.getText().equals("Name"))
+        {
+            g2nametf.setText("");
+            g2nametf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g2nametfFocusGained
+
+    private void g2nametfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2nametfFocusLost
+        
+        if(g2nametf.getText().equals(""))
+        {
+            g2nametf.setText("Name");
+            g2nametf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g2nametfFocusLost
+
+    private void g2contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2contacttfFocusGained
+        
+        if(g2contacttf.getText().equals("Contact No"))
+        {
+            g2contacttf.setText("");
+            g2contacttf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_g2contacttfFocusGained
+
+    private void g2contacttfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2contacttfFocusLost
+        
+        if(g2contacttf.getText().equals(""))
+        {
+            g2contacttf.setText("Contact No");
+            g2contacttf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_g2contacttfFocusLost
 
     /**
      * @param args the command line arguments
@@ -554,10 +765,10 @@ public class Guest extends javax.swing.JFrame {
     private javax.swing.JLabel g2rollno;
     private javax.swing.JTextField g2rollnotf;
     private javax.swing.JLabel guestdatalabel;
+    private javax.swing.JButton guestlist;
     private javax.swing.JPanel guestmenulabel;
     private javax.swing.JTable guesttable;
     private javax.swing.JPanel guesttablepanel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField rollnotf;
     private javax.swing.JScrollPane scrollpane;

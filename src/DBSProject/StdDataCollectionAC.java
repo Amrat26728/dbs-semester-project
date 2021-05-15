@@ -5,6 +5,7 @@
  */
 package DBSProject;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
@@ -94,7 +95,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.setLayout(null);
 
         rollno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        rollno.setText("Roll No");
+        rollno.setText(" Roll No");
         jPanel1.add(rollno);
         rollno.setBounds(130, 40, 60, 30);
 
@@ -103,7 +104,17 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.add(jLabel1);
         jLabel1.setBounds(190, 10, 80, 30);
 
+        rollnotf.setForeground(new java.awt.Color(153, 153, 153));
+        rollnotf.setText("Roll No");
         rollnotf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        rollnotf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rollnotfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                rollnotfFocusLost(evt);
+            }
+        });
         rollnotf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 rollnotfKeyPressed(evt);
@@ -112,6 +123,16 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.add(rollnotf);
         rollnotf.setBounds(190, 40, 230, 30);
 
+        nametf.setForeground(new java.awt.Color(153, 153, 153));
+        nametf.setText("Name");
+        nametf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                nametfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                nametfFocusLost(evt);
+            }
+        });
         nametf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nametfKeyPressed(evt);
@@ -121,15 +142,25 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         nametf.setBounds(190, 90, 230, 30);
 
         name.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        name.setText("Name");
+        name.setText(" Name");
         jPanel1.add(name);
         name.setBounds(140, 90, 50, 30);
 
         fname.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        fname.setText(" Father's Name");
+        fname.setText("  Father's Name");
         jPanel1.add(fname);
-        fname.setBounds(80, 140, 100, 30);
+        fname.setBounds(80, 140, 110, 30);
 
+        fnametf.setForeground(new java.awt.Color(153, 153, 153));
+        fnametf.setText("Father's Name");
+        fnametf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fnametfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fnametfFocusLost(evt);
+            }
+        });
         fnametf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 fnametfKeyPressed(evt);
@@ -138,6 +169,16 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.add(fnametf);
         fnametf.setBounds(190, 140, 230, 30);
 
+        contacttf.setForeground(new java.awt.Color(153, 153, 153));
+        contacttf.setText("Contact No");
+        contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                contacttfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                contacttfFocusLost(evt);
+            }
+        });
         contacttf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 contacttfKeyPressed(evt);
@@ -147,7 +188,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         contacttf.setBounds(190, 190, 230, 30);
 
         contact.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        contact.setText("Contact");
+        contact.setText(" Contact");
         jPanel1.add(contact);
         contact.setBounds(130, 190, 60, 30);
 
@@ -160,6 +201,16 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.add(bg);
         bg.setBounds(190, 240, 70, 20);
 
+        countrytf.setForeground(new java.awt.Color(153, 153, 153));
+        countrytf.setText("Country Name");
+        countrytf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                countrytfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                countrytfFocusLost(evt);
+            }
+        });
         countrytf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 countrytfKeyPressed(evt);
@@ -174,10 +225,20 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         country.setBounds(130, 280, 60, 30);
 
         province.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        province.setText("Province");
+        province.setText(" Province");
         jPanel1.add(province);
         province.setBounds(120, 330, 70, 30);
 
+        provincetf.setForeground(new java.awt.Color(153, 153, 153));
+        provincetf.setText("Province Name");
+        provincetf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                provincetfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                provincetfFocusLost(evt);
+            }
+        });
         provincetf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 provincetfKeyPressed(evt);
@@ -186,6 +247,16 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         jPanel1.add(provincetf);
         provincetf.setBounds(190, 330, 230, 30);
 
+        districttf.setForeground(new java.awt.Color(153, 153, 153));
+        districttf.setText("District Name");
+        districttf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                districttfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                districttfFocusLost(evt);
+            }
+        });
         districttf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 districttfKeyPressed(evt);
@@ -195,15 +266,25 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         districttf.setBounds(190, 380, 230, 30);
 
         district.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        district.setText("District");
+        district.setText(" District");
         jPanel1.add(district);
         district.setBounds(130, 380, 60, 30);
 
         address.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        address.setText(" Address");
+        address.setText("  Address");
         jPanel1.add(address);
         address.setBounds(120, 430, 70, 30);
 
+        addresstf.setForeground(new java.awt.Color(153, 153, 153));
+        addresstf.setText("Address");
+        addresstf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                addresstfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                addresstfFocusLost(evt);
+            }
+        });
         addresstf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 addresstfKeyPressed(evt);
@@ -211,11 +292,22 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         });
         jPanel1.add(addresstf);
         addresstf.setBounds(190, 430, 230, 30);
+
+        emailtf.setForeground(new java.awt.Color(153, 153, 153));
+        emailtf.setText("Email");
+        emailtf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailtfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailtfFocusLost(evt);
+            }
+        });
         jPanel1.add(emailtf);
         emailtf.setBounds(190, 480, 230, 30);
 
         email.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        email.setText("Email");
+        email.setText(" Email");
         jPanel1.add(email);
         email.setBounds(140, 480, 50, 30);
 
@@ -244,10 +336,20 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         submit.setBounds(130, 590, 110, 30);
 
         emergcontact.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        emergcontact.setText("  Emergency Contact");
+        emergcontact.setText("   Emergency Contact");
         jPanel1.add(emergcontact);
-        emergcontact.setBounds(40, 530, 140, 30);
+        emergcontact.setBounds(40, 530, 150, 30);
 
+        emergcontacttf.setForeground(new java.awt.Color(153, 153, 153));
+        emergcontacttf.setText("Emergency Contact");
+        emergcontacttf.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emergcontacttfFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emergcontacttfFocusLost(evt);
+            }
+        });
         emergcontacttf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 emergcontacttfKeyPressed(evt);
@@ -561,6 +663,206 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
            }
         
     }//GEN-LAST:event_rollnotfKeyPressed
+
+    private void rollnotfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollnotfFocusGained
+        
+        if(rollnotf.getText().equals("Roll No"))
+        {
+            rollnotf.setText("");
+            rollnotf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_rollnotfFocusGained
+
+    private void rollnotfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollnotfFocusLost
+        
+        if(rollnotf.getText().equals(""))
+        {
+            rollnotf.setText("Roll No");
+            rollnotf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_rollnotfFocusLost
+
+    private void nametfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nametfFocusGained
+        
+        if(nametf.getText().equals("Name"))
+        {
+            nametf.setText("");
+            nametf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_nametfFocusGained
+
+    private void nametfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_nametfFocusLost
+        
+        if(nametf.getText().equals(""))
+        {
+            nametf.setText("Name");
+            nametf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_nametfFocusLost
+
+    private void fnametfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fnametfFocusGained
+        
+        if(fnametf.getText().equals("Father's Name"))
+        {
+            fnametf.setText("");
+            fnametf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_fnametfFocusGained
+
+    private void fnametfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fnametfFocusLost
+        
+        if(fnametf.getText().equals(""))
+        {
+            fnametf.setText("Father's Name");
+            fnametf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_fnametfFocusLost
+
+    private void contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contacttfFocusGained
+        
+        if(contacttf.getText().equals("Contact No"))
+        {
+            contacttf.setText("");
+            contacttf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_contacttfFocusGained
+
+    private void contacttfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contacttfFocusLost
+        
+        if(contacttf.getText().equals(""))
+        {
+            contacttf.setText("Contact No");
+            contacttf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_contacttfFocusLost
+
+    private void countrytfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_countrytfFocusGained
+        
+        if(countrytf.getText().equals("Country Name"))
+        {
+            countrytf.setText("");
+            countrytf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_countrytfFocusGained
+
+    private void countrytfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_countrytfFocusLost
+        
+        if(countrytf.getText().equals(""))
+        {
+            countrytf.setText("Country Name");
+            countrytf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_countrytfFocusLost
+
+    private void provincetfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_provincetfFocusGained
+        
+        if(provincetf.getText().equals("Province Name"))
+        {
+            provincetf.setText("");
+            provincetf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_provincetfFocusGained
+
+    private void provincetfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_provincetfFocusLost
+        
+        if(provincetf.getText().equals(""))
+        {
+            provincetf.setText("Province Name");
+            provincetf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_provincetfFocusLost
+
+    private void districttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_districttfFocusGained
+        
+        if(districttf.getText().equals("District Name"))
+        {
+            districttf.setText("");
+            districttf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_districttfFocusGained
+
+    private void districttfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_districttfFocusLost
+        
+        if(districttf.getText().equals(""))
+        {
+            districttf.setText("District Name");
+            districttf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_districttfFocusLost
+
+    private void addresstfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addresstfFocusGained
+        
+        if(addresstf.getText().equals("Address"))
+        {
+            addresstf.setText("");
+            addresstf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_addresstfFocusGained
+
+    private void addresstfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_addresstfFocusLost
+        
+        if(addresstf.getText().equals(""))
+        {
+            addresstf.setText("Address");
+            addresstf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_addresstfFocusLost
+
+    private void emailtfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailtfFocusGained
+        
+        if(emailtf.getText().equals("Email"))
+        {
+            emailtf.setText("");
+            emailtf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_emailtfFocusGained
+
+    private void emailtfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailtfFocusLost
+        
+        if(emailtf.getText().equals(""))
+        {
+            emailtf.setText("Email");
+            emailtf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_emailtfFocusLost
+
+    private void emergcontacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emergcontacttfFocusGained
+        
+        if(emergcontacttf.getText().equals("Emergency Contact"))
+        {
+            emergcontacttf.setText("");
+            emergcontacttf.setForeground(new Color(0,0,0));
+        }
+        
+    }//GEN-LAST:event_emergcontacttfFocusGained
+
+    private void emergcontacttfFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emergcontacttfFocusLost
+        
+        if(emergcontacttf.getText().equals(""))
+        {
+            emergcontacttf.setText("Emergency Contact");
+            emergcontacttf.setForeground(new Color(153,153,153));
+        }
+        
+    }//GEN-LAST:event_emergcontacttfFocusLost
 
     /**
      * @param args the command line arguments
