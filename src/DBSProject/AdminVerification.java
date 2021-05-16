@@ -73,16 +73,16 @@ public class AdminVerification extends javax.swing.JFrame {
         username.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         username.setText("Username:");
         loginpanel.add(username);
-        username.setBounds(70, 30, 80, 30);
+        username.setBounds(70, 60, 80, 30);
 
         password.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         password.setText(" Password:");
         loginpanel.add(password);
-        password.setBounds(70, 100, 80, 30);
+        password.setBounds(70, 130, 80, 30);
         loginpanel.add(usernametf);
-        usernametf.setBounds(150, 30, 220, 30);
+        usernametf.setBounds(150, 60, 220, 30);
         loginpanel.add(passwordtf);
-        passwordtf.setBounds(150, 100, 220, 30);
+        passwordtf.setBounds(150, 130, 220, 30);
 
         usernameerror.setForeground(new java.awt.Color(255, 0, 0));
         loginpanel.add(usernameerror);
@@ -103,7 +103,7 @@ public class AdminVerification extends javax.swing.JFrame {
             }
         });
         loginpanel.add(loginbtn);
-        loginbtn.setBounds(90, 160, 110, 30);
+        loginbtn.setBounds(90, 190, 110, 30);
 
         cancel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cancel.setText("Cancel");
@@ -114,7 +114,7 @@ public class AdminVerification extends javax.swing.JFrame {
             }
         });
         loginpanel.add(cancel);
-        cancel.setBounds(250, 160, 110, 30);
+        cancel.setBounds(250, 190, 110, 30);
 
         getContentPane().add(loginpanel);
         loginpanel.setBounds(0, 70, 450, 300);

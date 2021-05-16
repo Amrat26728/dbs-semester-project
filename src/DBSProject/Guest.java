@@ -174,7 +174,7 @@ public class Guest extends javax.swing.JFrame {
         g1contact.setBounds(80, 280, 100, 30);
 
         g1contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        g1contacttf.setText("Contact No");
+        g1contacttf.setText("1234567");
         g1contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 g1contacttfFocusGained(evt);
@@ -220,7 +220,7 @@ public class Guest extends javax.swing.JFrame {
         g2contact.setBounds(90, 480, 90, 30);
 
         g2contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        g2contacttf.setText("Contact No");
+        g2contacttf.setText("1234567");
         g2contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 g2contacttfFocusGained(evt);
@@ -268,7 +268,7 @@ public class Guest extends javax.swing.JFrame {
         g1nametf.setBounds(180, 230, 240, 30);
 
         rollnotf.setForeground(new java.awt.Color(153, 153, 153));
-        rollnotf.setText("Roll No of student");
+        rollnotf.setText("Roll No");
         rollnotf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 rollnotfFocusGained(evt);
@@ -371,7 +371,7 @@ public class Guest extends javax.swing.JFrame {
        
         if(g1contacttf.getText().isEmpty() || g2contacttf.getText().isEmpty() || stdrollno.getText().isEmpty() || g1nametf.getText().isEmpty() || g2nametf.getText().isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Something is wrong while giving data!", null, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
         }
         else
         {
@@ -630,7 +630,7 @@ public class Guest extends javax.swing.JFrame {
 
     private void g1contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1contacttfFocusGained
         
-        if(g1contacttf.getText().equals("Contact No"))
+        if(g1contacttf.getText().equals("1234567"))
         {
             g1contacttf.setText("");
             g1contacttf.setForeground(new Color(0,0,0));
@@ -642,7 +642,7 @@ public class Guest extends javax.swing.JFrame {
         
         if(g1contacttf.getText().equals(""))
         {
-            g1contacttf.setText("Contact No");
+            g1contacttf.setText("1234567");
             g1contacttf.setForeground(new Color(153,153,153));
         }
         
@@ -690,7 +690,7 @@ public class Guest extends javax.swing.JFrame {
 
     private void g2contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2contacttfFocusGained
         
-        if(g2contacttf.getText().equals("Contact No"))
+        if(g2contacttf.getText().equals("1234567"))
         {
             g2contacttf.setText("");
             g2contacttf.setForeground(new Color(0,0,0));
@@ -702,7 +702,7 @@ public class Guest extends javax.swing.JFrame {
         
         if(g2contacttf.getText().equals(""))
         {
-            g2contacttf.setText("Contact No");
+            g2contacttf.setText("1234567");
             g2contacttf.setForeground(new Color(153,153,153));
         }
         

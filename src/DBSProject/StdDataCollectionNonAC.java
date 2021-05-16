@@ -140,7 +140,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         nametf.setBounds(180, 100, 230, 30);
 
         fnametf.setForeground(new java.awt.Color(153, 153, 153));
-        fnametf.setText("Father's Name");
+        fnametf.setText("Father Name");
         fnametf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 fnametfFocusGained(evt);
@@ -168,7 +168,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         contact.setBounds(120, 200, 60, 30);
 
         contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        contacttf.setText("Contact No");
+        contacttf.setText("1234567");
         contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 contacttfFocusGained(evt);
@@ -311,7 +311,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         submit.setBounds(130, 600, 100, 30);
 
         emergcontacttf.setForeground(new java.awt.Color(153, 153, 153));
-        emergcontacttf.setText("Emergency Contact");
+        emergcontacttf.setText("1234567");
         emergcontacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 emergcontacttfFocusGained(evt);
@@ -700,7 +700,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void fnametfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fnametfFocusGained
         
-        if(fnametf.getText().equals("Father's Name"))
+        if(fnametf.getText().equals("Father Name"))
         {
             fnametf.setText("");
             fnametf.setForeground(new Color(0,0,0));
@@ -712,7 +712,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         
         if(fnametf.getText().equals(""))
         {
-            fnametf.setText("Father's Name");
+            fnametf.setText("Father Name");
             fnametf.setForeground(new Color(153,153,153));
         }
         
@@ -720,7 +720,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contacttfFocusGained
         
-        if(contacttf.getText().equals("Contact No"))
+        if(contacttf.getText().equals("1234567"))
         {
             contacttf.setText("");
             contacttf.setForeground(new Color(0,0,0));
@@ -732,7 +732,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         
         if(contacttf.getText().equals(""))
         {
-            contacttf.setText("Contact No");
+            contacttf.setText("1234567");
             contacttf.setForeground(new Color(153,153,153));
         }
         
@@ -840,7 +840,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void emergcontacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emergcontacttfFocusGained
         
-        if(emergcontacttf.getText().equals("Emergency Contact"))
+        if(emergcontacttf.getText().equals("1234567"))
         {
             emergcontacttf.setText("");
             emergcontacttf.setForeground(new Color(0,0,0));
@@ -852,7 +852,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         
         if(emergcontacttf.getText().equals(""))
         {
-            emergcontacttf.setText("Emergency Contact");
+            emergcontacttf.setText("1234567");
             emergcontacttf.setForeground(new Color(153,153,153));
         }
         
