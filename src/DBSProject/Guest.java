@@ -570,7 +570,7 @@ public class Guest extends javax.swing.JFrame {
 
     private void rollnotfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rollnotfFocusGained
         
-        if(rollnotf.getText().equals("Roll No of student"))
+        if(rollnotf.getText().equals("Roll No"))
         {
             rollnotf.setText("");
             rollnotf.setForeground(new Color(0,0,0));
@@ -582,7 +582,7 @@ public class Guest extends javax.swing.JFrame {
         
         if(rollnotf.getText().equals(""))
         {
-            rollnotf.setText("Roll No of student");
+            rollnotf.setText("Roll No");
             rollnotf.setForeground(new Color(153,153,153));
         }
         

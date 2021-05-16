@@ -86,12 +86,12 @@ public class AdminVerification extends javax.swing.JFrame {
 
         usernameerror.setForeground(new java.awt.Color(255, 0, 0));
         loginpanel.add(usernameerror);
-        usernameerror.setBounds(150, 60, 220, 20);
+        usernameerror.setBounds(150, 90, 220, 20);
         usernameerror.setVisible(false);
 
         passworderror.setForeground(new java.awt.Color(255, 0, 0));
         loginpanel.add(passworderror);
-        passworderror.setBounds(150, 130, 220, 20);
+        passworderror.setBounds(150, 160, 220, 20);
         passworderror.setVisible(false);
 
         loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
