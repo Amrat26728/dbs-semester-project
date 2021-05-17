@@ -119,6 +119,9 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 rollnotfKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rollnotfKeyReleased(evt);
+            }
         });
         jPanel1.add(rollnotf);
         rollnotf.setBounds(190, 40, 230, 30);
@@ -863,6 +866,10 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         }
         
     }//GEN-LAST:event_emergcontacttfFocusLost
+
+    private void rollnotfKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rollnotfKeyReleased
+
+    }//GEN-LAST:event_rollnotfKeyReleased
 
     /**
      * @param args the command line arguments

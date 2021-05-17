@@ -90,7 +90,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void studentaccessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentaccessActionPerformed
         
-        new UserFrame().setVisible(true);
+        new SignUp().setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_studentaccessActionPerformed
