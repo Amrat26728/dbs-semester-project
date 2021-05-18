@@ -168,13 +168,18 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         contact.setBounds(120, 200, 60, 30);
 
         contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        contacttf.setText("1234567");
+        contacttf.setText("03*********");
         contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 contacttfFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 contacttfFocusLost(evt);
+            }
+        });
+        contacttf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                contacttfActionPerformed(evt);
             }
         });
         contacttf.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -311,7 +316,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         submit.setBounds(130, 600, 100, 30);
 
         emergcontacttf.setForeground(new java.awt.Color(153, 153, 153));
-        emergcontacttf.setText("1234567");
+        emergcontacttf.setText("03*********");
         emergcontacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 emergcontacttfFocusGained(evt);
@@ -380,13 +385,19 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
         if(rollnotf.getText().isEmpty() || nametf.getText().isEmpty() || fnametf.getText().isEmpty() || contacttf.getText().isEmpty() || countrytf.getText().isEmpty() || provincetf.getText().isEmpty() || districttf.getText().isEmpty() || addresstf.getText().isEmpty() || emailtf.getText().isEmpty() || emergcontacttf.getText().isEmpty() )
         {
-            JOptionPane.showMessageDialog(null, "Something is wrong while giving data!", null, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else if(rollnotf.getText().equals("Roll No") || nametf.getText().equals("Name") || fnametf.getText().equals("Father Name") || contacttf.getText().equals("03*********") || countrytf.getText().equals("Country Name") || provincetf.getText().equals("Province Name") || districttf.getText().equals("District Name") || addresstf.getText().equals("Address") || emailtf.getText().equals("Email") || emergcontacttf.getText().equals("03*********"))
+        {
+            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
         }
         
         else
         {
             String Roll_no=rollnotf.getText();
             boolean check=false;
+            boolean check2=false;
         
         try{
             Connection con2 = new DBConnection().getConnection();
@@ -400,17 +411,30 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
                 {
                     check=true;
                     break;
-                }
-                else
+                } 
+            }
+            
+            ResultSet rs1=s.executeQuery("select roll_no from hostel_data_ac");
+            while(rs1.next())
+            {
+                String string=rs1.getString(1);
+                if(string.equals(Roll_no))
                 {
-                    check=false;
-                }   
+                    check2=true;
+                    break;
+                } 
             }
             
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Roll No already exists");
+                JOptionPane.showMessageDialog(null, "This Roll No is already allowed Non AC room!", null, JOptionPane.INFORMATION_MESSAGE);
             }
+            
+            else if(check2)
+            {
+                JOptionPane.showMessageDialog(null, "This Roll No is already allowed AC room!", null, JOptionPane.INFORMATION_MESSAGE);
+            }
+            
             else
             {
                 String str=null;
@@ -720,7 +744,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contacttfFocusGained
         
-        if(contacttf.getText().equals("1234567"))
+        if(contacttf.getText().equals("03*********"))
         {
             contacttf.setText("");
             contacttf.setForeground(new Color(0,0,0));
@@ -732,7 +756,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         
         if(contacttf.getText().equals(""))
         {
-            contacttf.setText("1234567");
+            contacttf.setText("03*********");
             contacttf.setForeground(new Color(153,153,153));
         }
         
@@ -840,7 +864,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     private void emergcontacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emergcontacttfFocusGained
         
-        if(emergcontacttf.getText().equals("1234567"))
+        if(emergcontacttf.getText().equals("03*********"))
         {
             emergcontacttf.setText("");
             emergcontacttf.setForeground(new Color(0,0,0));
@@ -852,11 +876,15 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         
         if(emergcontacttf.getText().equals(""))
         {
-            emergcontacttf.setText("1234567");
+            emergcontacttf.setText("03*********");
             emergcontacttf.setForeground(new Color(153,153,153));
         }
         
     }//GEN-LAST:event_emergcontacttfFocusLost
+
+    private void contacttfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contacttfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contacttfActionPerformed
 
     /**
      * @param args the command line arguments

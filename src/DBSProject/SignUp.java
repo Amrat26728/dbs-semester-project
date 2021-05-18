@@ -59,6 +59,7 @@ public class SignUp extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 backMouseClicked(evt);
@@ -75,6 +76,12 @@ public class SignUp extends javax.swing.JFrame {
         loginbtn.setBackground(new java.awt.Color(153, 204, 255));
         loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         loginbtn.setText("Sign In");
+        loginbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginbtnActionPerformed(evt);
+            }
+        });
 
         password.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         password.setText("Password:");
@@ -89,6 +96,11 @@ public class SignUp extends javax.swing.JFrame {
         });
 
         viewpasswordlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordlogin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                viewpasswordloginKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout loginpanelLayout = new javax.swing.GroupLayout(loginpanel);
         loginpanel.setLayout(loginpanelLayout);
@@ -117,9 +129,7 @@ public class SignUp extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rollno, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(loginpanelLayout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(rollnotf, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(rollnotf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(loginpanelLayout.createSequentialGroup()
@@ -156,6 +166,7 @@ public class SignUp extends javax.swing.JFrame {
         signupbtn.setBackground(new java.awt.Color(153, 204, 255));
         signupbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signupbtn.setText("SignUp");
+        signupbtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signupbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signupbtnActionPerformed(evt);
@@ -166,6 +177,11 @@ public class SignUp extends javax.swing.JFrame {
         rollnosignup.setText("Roll No:");
 
         viewpasswordsignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordsignup.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                viewpasswordsignupKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout signuppanelLayout = new javax.swing.GroupLayout(signuppanel);
         signuppanel.setLayout(signuppanelLayout);
@@ -289,7 +305,7 @@ public class SignUp extends javax.swing.JFrame {
               }
               else
               {
-                  JOptionPane.showMessageDialog(null, "Roll No already exists!", null, JOptionPane.ERROR_MESSAGE);
+                  JOptionPane.showMessageDialog(null, "Roll No is already registered!", null, JOptionPane.ERROR_MESSAGE);
               }
                 con.close();
             }catch(SQLException e){
@@ -304,7 +320,7 @@ public class SignUp extends javax.swing.JFrame {
         
         char ch = evt.getKeyChar();
         
-        if(Character.isLetter(ch) || Character.isDigit(ch))
+        if(Character.isLetter(ch) || Character.isDigit(ch) || Character.isISOControl(ch))
         {
             rollnotfsignup.setEditable(true);
         }
@@ -336,7 +352,7 @@ public class SignUp extends javax.swing.JFrame {
         
         char ch = evt.getKeyChar();
         
-        if(Character.isLetter(ch) || Character.isDigit(ch))
+        if(Character.isLetter(ch) || Character.isDigit(ch) || Character.isISOControl(ch))
         {
             rollnotf.setEditable(true);
         }
@@ -347,6 +363,71 @@ public class SignUp extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_rollnotfKeyPressed
+
+    private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
+        
+        String RollNo = rollnotf.getText();
+        char[] ch = passwordtf.getPassword();
+        String pass = String.valueOf(ch);
+        boolean check = false;
+        boolean check2 = true;
+        String print = "Your roll no is not registered please signup first!";
+        
+        if(RollNo.isEmpty() || pass.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else
+        {
+            try{
+                Connection con = new DBConnection().getConnection();
+                Statement s = con.createStatement();
+                ResultSet rs = s.executeQuery("Select roll_no, password from signup_data");
+                while(rs.next())
+                {
+                    String str = rs.getString("roll_no");
+                    if(RollNo.equals(str))
+                    {
+                        String str2 = rs.getString("password");
+                        if(pass.equals(str2))
+                        {
+                            check = true;
+                        }
+                        else
+                        {
+                            print = "Password is incorrect!";
+                        }
+                    }
+                }
+
+                if(check)
+                {
+                    new UserFrame().setVisible(true);
+                    this.dispose();
+                }
+
+                else
+                {
+                    JOptionPane.showMessageDialog(null, print, null, JOptionPane.ERROR_MESSAGE);
+                }
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null, e);
+            }
+        }
+    }//GEN-LAST:event_loginbtnActionPerformed
+
+    private void viewpasswordloginKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_viewpasswordloginKeyPressed
+        
+        
+        
+    }//GEN-LAST:event_viewpasswordloginKeyPressed
+
+    private void viewpasswordsignupKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_viewpasswordsignupKeyPressed
+        
+        
+        
+    }//GEN-LAST:event_viewpasswordsignupKeyPressed
 
     /**
      * @param args the command line arguments
