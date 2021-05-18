@@ -116,7 +116,7 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         
-        new MainFrame().setVisible(true);
+        new SignUp().setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_jLabel1MouseClicked
