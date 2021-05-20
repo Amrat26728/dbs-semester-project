@@ -22,6 +22,8 @@ public class SignUp extends javax.swing.JFrame {
      */
     public SignUp() {
         initComponents();
+        viewpasswordlogin.setVisible(false);
+        viewpasswordsignup.setVisible(false);
         setSize(1200,700);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -45,6 +47,7 @@ public class SignUp extends javax.swing.JFrame {
         passwordtf = new javax.swing.JPasswordField();
         rollnotf = new javax.swing.JTextField();
         viewpasswordlogin = new javax.swing.JLabel();
+        hide1 = new javax.swing.JLabel();
         signuppanel = new javax.swing.JPanel();
         namesignup = new javax.swing.JLabel();
         passwordsignup = new javax.swing.JLabel();
@@ -54,6 +57,7 @@ public class SignUp extends javax.swing.JFrame {
         signupbtn = new javax.swing.JButton();
         rollnosignup = new javax.swing.JLabel();
         viewpasswordsignup = new javax.swing.JLabel();
+        hide2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -69,9 +73,11 @@ public class SignUp extends javax.swing.JFrame {
         back.setBounds(6, 6, 28, 24);
 
         panel.setBackground(new java.awt.Color(248, 245, 241));
+        panel.setLayout(null);
 
         loginpanel.setBackground(new java.awt.Color(248, 245, 241));
         loginpanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "Login", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(153, 153, 153))); // NOI18N
+        loginpanel.setLayout(null);
 
         loginbtn.setBackground(new java.awt.Color(153, 204, 255));
         loginbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -82,86 +88,88 @@ public class SignUp extends javax.swing.JFrame {
                 loginbtnActionPerformed(evt);
             }
         });
+        loginpanel.add(loginbtn);
+        loginbtn.setBounds(47, 188, 340, 32);
 
         password.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         password.setText("Password:");
+        loginpanel.add(password);
+        password.setBounds(47, 120, 72, 27);
 
         rollno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rollno.setText("Roll No:");
+        loginpanel.add(rollno);
+        rollno.setBounds(61, 68, 58, 26);
+        loginpanel.add(passwordtf);
+        passwordtf.setBounds(125, 118, 260, 32);
 
         rollnotf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 rollnotfKeyPressed(evt);
             }
         });
+        loginpanel.add(rollnotf);
+        rollnotf.setBounds(125, 68, 260, 32);
 
+        viewpasswordlogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewpasswordlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewpasswordloginMouseClicked(evt);
+            }
+        });
         viewpasswordlogin.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 viewpasswordloginKeyPressed(evt);
             }
         });
+        loginpanel.add(viewpasswordlogin);
+        viewpasswordlogin.setBounds(390, 120, 30, 32);
 
-        javax.swing.GroupLayout loginpanelLayout = new javax.swing.GroupLayout(loginpanel);
-        loginpanel.setLayout(loginpanelLayout);
-        loginpanelLayout.setHorizontalGroup(
-            loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginpanelLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(loginpanelLayout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(rollno, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(rollnotf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(loginpanelLayout.createSequentialGroup()
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(6, 6, 6)
-                        .addComponent(passwordtf, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewpasswordlogin))
-                    .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        loginpanelLayout.setVerticalGroup(
-            loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginpanelLayout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rollno, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rollnotf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(loginpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(loginpanelLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(passwordtf, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(viewpasswordlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(38, 38, 38)
-                .addComponent(loginbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
+        hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hide1MouseClicked(evt);
+            }
+        });
+        loginpanel.add(hide1);
+        hide1.setBounds(390, 120, 30, 30);
+
+        panel.add(loginpanel);
+        loginpanel.setBounds(101, 144, 430, 280);
 
         signuppanel.setBackground(new java.awt.Color(248, 245, 241));
         signuppanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2), "SignUp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 24), new java.awt.Color(153, 153, 153))); // NOI18N
+        signuppanel.setLayout(null);
 
         namesignup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         namesignup.setText(" Name:");
+        signuppanel.add(namesignup);
+        namesignup.setBounds(68, 97, 52, 27);
 
         passwordsignup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         passwordsignup.setText(" Password:");
+        signuppanel.add(passwordsignup);
+        passwordsignup.setBounds(44, 141, 76, 26);
 
         nametfsignup.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 nametfsignupKeyPressed(evt);
             }
         });
+        signuppanel.add(nametfsignup);
+        nametfsignup.setBounds(124, 95, 260, 32);
+        signuppanel.add(passwordtfsignup);
+        passwordtfsignup.setBounds(124, 139, 260, 32);
 
         rollnotfsignup.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 rollnotfsignupKeyPressed(evt);
             }
         });
+        signuppanel.add(rollnotfsignup);
+        rollnotfsignup.setBounds(124, 51, 260, 32);
 
         signupbtn.setBackground(new java.awt.Color(153, 204, 255));
         signupbtn.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -172,85 +180,41 @@ public class SignUp extends javax.swing.JFrame {
                 signupbtnActionPerformed(evt);
             }
         });
+        signuppanel.add(signupbtn);
+        signupbtn.setBounds(44, 203, 340, 32);
 
         rollnosignup.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         rollnosignup.setText("Roll No:");
+        signuppanel.add(rollnosignup);
+        rollnosignup.setBounds(62, 53, 62, 26);
 
+        viewpasswordsignup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewpasswordsignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordsignup.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                viewpasswordsignupMouseClicked(evt);
+            }
+        });
         viewpasswordsignup.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 viewpasswordsignupKeyPressed(evt);
             }
         });
+        signuppanel.add(viewpasswordsignup);
+        viewpasswordsignup.setBounds(390, 139, 30, 32);
 
-        javax.swing.GroupLayout signuppanelLayout = new javax.swing.GroupLayout(signuppanel);
-        signuppanel.setLayout(signuppanelLayout);
-        signuppanelLayout.setHorizontalGroup(
-            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signuppanelLayout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(signuppanelLayout.createSequentialGroup()
-                        .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(rollnosignup, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(signuppanelLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addComponent(namesignup, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(signuppanelLayout.createSequentialGroup()
-                                .addComponent(passwordsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4)))
-                        .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(nametfsignup, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(rollnotfsignup, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(passwordtfsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(signupbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(viewpasswordsignup)
-                .addContainerGap())
-        );
-        signuppanelLayout.setVerticalGroup(
-            signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(signuppanelLayout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rollnosignup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rollnotfsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(namesignup, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nametfsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(signuppanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(passwordsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(passwordtfsignup, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(viewpasswordsignup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(32, 32, 32)
-                .addComponent(signupbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                hide2MouseClicked(evt);
+            }
+        });
+        signuppanel.add(hide2);
+        hide2.setBounds(390, 140, 30, 30);
 
-        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
-        panel.setLayout(panelLayout);
-        panelLayout.setHorizontalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(101, 101, 101)
-                .addComponent(loginpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114)
-                .addComponent(signuppanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-        panelLayout.setVerticalGroup(
-            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(signuppanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(loginpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(248, Short.MAX_VALUE))
-        );
+        panel.add(signuppanel);
+        signuppanel.setBounds(653, 144, 430, 278);
 
         getContentPane().add(panel);
         panel.setBounds(0, 0, 1190, 670);
@@ -429,6 +393,38 @@ public class SignUp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_viewpasswordsignupKeyPressed
 
+    private void hide1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MouseClicked
+        
+        viewpasswordlogin.setVisible(true);
+        hide1.setVisible(false);
+        passwordtf.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_hide1MouseClicked
+
+    private void viewpasswordloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewpasswordloginMouseClicked
+        
+        hide1.setVisible(true);
+        viewpasswordlogin.setVisible(false);
+        passwordtf.setEchoChar('*');
+        
+    }//GEN-LAST:event_viewpasswordloginMouseClicked
+
+    private void hide2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MouseClicked
+        
+        viewpasswordsignup.setVisible(true);
+        hide2.setVisible(false);
+        passwordtfsignup.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_hide2MouseClicked
+
+    private void viewpasswordsignupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewpasswordsignupMouseClicked
+        
+        hide2.setVisible(true);
+        viewpasswordsignup.setVisible(false);
+        passwordtfsignup.setEchoChar('*');
+        
+    }//GEN-LAST:event_viewpasswordsignupMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -466,6 +462,8 @@ public class SignUp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
+    private javax.swing.JLabel hide1;
+    private javax.swing.JLabel hide2;
     private javax.swing.JButton loginbtn;
     private javax.swing.JPanel loginpanel;
     private javax.swing.JLabel namesignup;
