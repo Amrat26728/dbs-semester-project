@@ -747,7 +747,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
 
     private void contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_contacttfFocusGained
         
-        if(contacttf.getText().equals("1234567"))
+        if(contacttf.getText().equals("03*********"))
         {
             contacttf.setText("");
             contacttf.setForeground(new Color(0,0,0));
@@ -759,7 +759,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         
         if(contacttf.getText().equals(""))
         {
-            contacttf.setText("1234567");
+            contacttf.setText("03*********");
             contacttf.setForeground(new Color(153,153,153));
         }
         

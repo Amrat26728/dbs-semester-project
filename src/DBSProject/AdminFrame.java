@@ -531,6 +531,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
                 if(check)
                 {
+                     tableshow.setText("AC Record");
                      javax.swing.table.DefaultTableModel model;
                      table.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"Roll No", "Name", "Father's Name","Contact", "Blood Group", "Country", "Province", "District", "Address", "Email", "Emergency Contact", "Room Allow Date"}));
 
@@ -861,6 +862,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
             if(check)
             {
+                 tableshow.setText("Non AC Record");
                  javax.swing.table.DefaultTableModel model;
                  table.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"Roll No", "Name", "Father's Name","Contact", "Blood Group", "Country", "Province", "District", "Address", "Email", "Emergency Contact", "Room Allow Date"}));
                  

@@ -113,6 +113,7 @@ public class SignUp extends javax.swing.JFrame {
 
         viewpasswordlogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewpasswordlogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordlogin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewpasswordlogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewpasswordloginMouseClicked(evt);
@@ -128,6 +129,7 @@ public class SignUp extends javax.swing.JFrame {
 
         hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide1MouseClicked(evt);
@@ -190,6 +192,7 @@ public class SignUp extends javax.swing.JFrame {
 
         viewpasswordsignup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         viewpasswordsignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/view.png"))); // NOI18N
+        viewpasswordsignup.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewpasswordsignup.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 viewpasswordsignupMouseClicked(evt);
@@ -205,6 +208,7 @@ public class SignUp extends javax.swing.JFrame {
 
         hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide2MouseClicked(evt);
@@ -269,6 +273,9 @@ public class SignUp extends javax.swing.JFrame {
               }
               else
               {
+                  rollnotfsignup.setText("");
+                  nametfsignup.setText("");
+                  passwordtfsignup.setText("");
                   JOptionPane.showMessageDialog(null, "Roll No is already registered!", null, JOptionPane.ERROR_MESSAGE);
               }
                 con.close();
@@ -373,6 +380,8 @@ public class SignUp extends javax.swing.JFrame {
 
                 else
                 {
+                    rollnotf.setText("");
+                    passwordtf.setText("");
                     JOptionPane.showMessageDialog(null, print, null, JOptionPane.ERROR_MESSAGE);
                 }
             }catch(SQLException e){
