@@ -116,11 +116,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="condition1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="( If he/she blongs to this university )"/>
+            <Property name="text" type="java.lang.String" value="( If he/she blongs to this university put roll no otherwise put none )"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="180" y="150" width="200" height="30"/>
+              <AbsoluteConstraints x="120" y="150" width="360" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -157,11 +157,11 @@
         </Component>
         <Component class="javax.swing.JLabel" name="condition2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="( If he/she belongs to this university )"/>
+            <Property name="text" type="java.lang.String" value="( If he/she blongs to this university put roll no otherwise put none )"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="180" y="350" width="220" height="30"/>
+              <AbsoluteConstraints x="120" y="350" width="360" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -228,7 +228,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="1234567"/>
+            <Property name="text" type="java.lang.String" value="03*********"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="g1contacttfFocusGained"/>
@@ -290,7 +290,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="1234567"/>
+            <Property name="text" type="java.lang.String" value="03*********"/>
           </Properties>
           <Events>
             <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="g2contacttfFocusGained"/>
@@ -511,7 +511,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="250" y="490" width="180" height="40"/>
+              <AbsoluteConstraints x="180" y="510" width="320" height="30"/>
             </Constraint>
           </Constraints>
         </Component>

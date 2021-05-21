@@ -116,9 +116,9 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g1rollnotf);
         g1rollnotf.setBounds(180, 180, 240, 30);
 
-        condition1.setText("( If he/she blongs to this university )");
+        condition1.setText("( If he/she blongs to this university put roll no otherwise put none )");
         datacollectingpanel.add(condition1);
-        condition1.setBounds(180, 150, 200, 30);
+        condition1.setBounds(120, 150, 360, 30);
 
         g2rollno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         g2rollno.setText("  Roll No");
@@ -143,9 +143,9 @@ public class Guest extends javax.swing.JFrame {
         datacollectingpanel.add(g2rollnotf);
         g2rollnotf.setBounds(180, 380, 240, 30);
 
-        condition2.setText("( If he/she belongs to this university )");
+        condition2.setText("( If he/she blongs to this university put roll no otherwise put none )");
         datacollectingpanel.add(condition2);
-        condition2.setBounds(180, 350, 220, 30);
+        condition2.setBounds(120, 350, 360, 30);
 
         allow.setBackground(new java.awt.Color(153, 204, 255));
         allow.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -174,7 +174,7 @@ public class Guest extends javax.swing.JFrame {
         g1contact.setBounds(80, 280, 100, 30);
 
         g1contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        g1contacttf.setText("1234567");
+        g1contacttf.setText("03*********");
         g1contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 g1contacttfFocusGained(evt);
@@ -220,7 +220,7 @@ public class Guest extends javax.swing.JFrame {
         g2contact.setBounds(90, 480, 90, 30);
 
         g2contacttf.setForeground(new java.awt.Color(153, 153, 153));
-        g2contacttf.setText("1234567");
+        g2contacttf.setText("03*********");
         g2contacttf.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 g2contacttfFocusGained(evt);
@@ -347,7 +347,7 @@ public class Guest extends javax.swing.JFrame {
             }
         });
         guesttablepanel.add(guestlist);
-        guestlist.setBounds(250, 490, 180, 40);
+        guestlist.setBounds(180, 510, 320, 30);
 
         getContentPane().add(guesttablepanel);
         guesttablepanel.setBounds(530, 50, 660, 650);
@@ -370,6 +370,10 @@ public class Guest extends javax.swing.JFrame {
     private void allowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_allowActionPerformed
        
         if(g1contacttf.getText().isEmpty() || g2contacttf.getText().isEmpty() || stdrollno.getText().isEmpty() || g1nametf.getText().isEmpty() || g2nametf.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
+        }
+        else if(rollnotf.getText().equals("Roll No") || g1rollnotf.getText().equals("Roll No") || g1nametf.getText().equals("Name") || g1contacttf.getText().equals("03*********") || g2rollnotf.getText().equals("Roll No") || g2nametf.getText().equals("Name") || g2contacttf.getText().equals("03*********"))
         {
             JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
         }
