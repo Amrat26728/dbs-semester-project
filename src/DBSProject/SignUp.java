@@ -125,11 +125,10 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
         loginpanel.add(viewpasswordlogin);
-        viewpasswordlogin.setBounds(390, 120, 30, 32);
+        viewpasswordlogin.setBounds(390, 120, 30, 30);
 
         hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
-        hide1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide1MouseClicked(evt);
@@ -208,7 +207,6 @@ public class SignUp extends javax.swing.JFrame {
 
         hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
-        hide2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide2MouseClicked(evt);
@@ -402,14 +400,6 @@ public class SignUp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_viewpasswordsignupKeyPressed
 
-    private void hide1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MouseClicked
-        
-        viewpasswordlogin.setVisible(true);
-        hide1.setVisible(false);
-        passwordtf.setEchoChar((char)0);
-        
-    }//GEN-LAST:event_hide1MouseClicked
-
     private void viewpasswordloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewpasswordloginMouseClicked
         
         hide1.setVisible(true);
@@ -418,14 +408,6 @@ public class SignUp extends javax.swing.JFrame {
         
     }//GEN-LAST:event_viewpasswordloginMouseClicked
 
-    private void hide2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MouseClicked
-        
-        viewpasswordsignup.setVisible(true);
-        hide2.setVisible(false);
-        passwordtfsignup.setEchoChar((char)0);
-        
-    }//GEN-LAST:event_hide2MouseClicked
-
     private void viewpasswordsignupMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewpasswordsignupMouseClicked
         
         hide2.setVisible(true);
@@ -433,6 +415,22 @@ public class SignUp extends javax.swing.JFrame {
         passwordtfsignup.setEchoChar('*');
         
     }//GEN-LAST:event_viewpasswordsignupMouseClicked
+
+    private void hide1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide1MouseClicked
+        
+        viewpasswordlogin.setVisible(true);
+        hide1.setVisible(false);
+        passwordtf.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_hide1MouseClicked
+
+    private void hide2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hide2MouseClicked
+        
+        viewpasswordsignup.setVisible(true);
+        hide2.setVisible(false);
+        passwordtfsignup.setEchoChar((char)0);
+        
+    }//GEN-LAST:event_hide2MouseClicked
 
     /**
      * @param args the command line arguments
