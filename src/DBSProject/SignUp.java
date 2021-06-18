@@ -129,6 +129,7 @@ public class SignUp extends javax.swing.JFrame {
 
         hide1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide1MouseClicked(evt);
@@ -207,6 +208,7 @@ public class SignUp extends javax.swing.JFrame {
 
         hide2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         hide2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/hide.png"))); // NOI18N
+        hide2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         hide2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 hide2MouseClicked(evt);
