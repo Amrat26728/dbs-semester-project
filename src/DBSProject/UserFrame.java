@@ -51,7 +51,7 @@ public class UserFrame extends javax.swing.JFrame {
         userframepanel.setLayout(null);
 
         welcome.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
-        welcome.setText("Welcome To MUET Hostel");
+        welcome.setText("Welcome To APNA Hostel");
         userframepanel.add(welcome);
         welcome.setBounds(310, 10, 590, 80);
 

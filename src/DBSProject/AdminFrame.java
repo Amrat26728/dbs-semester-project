@@ -719,6 +719,11 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "You have entered nothing!", null, JOptionPane.WARNING_MESSAGE);
         }
         
+        else if(Integer.valueOf(rooms)<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
         else if(Pattern.matches("^[A-z]+$", rooms))
         {
             JOptionPane.showMessageDialog(null, "Enter only numbers!", null, JOptionPane.WARNING_MESSAGE);
@@ -783,6 +788,11 @@ public class AdminFrame extends javax.swing.JFrame {
         else if(rooms.length()<=0)
         {
             JOptionPane.showMessageDialog(null, "You have entered nothing!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else if(Integer.valueOf(rooms)<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
         }
         
         else if(Pattern.matches("^[A-z]+$", rooms))

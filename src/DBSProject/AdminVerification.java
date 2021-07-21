@@ -152,20 +152,35 @@ public class AdminVerification extends javax.swing.JFrame {
                 usernameerror.setVisible(true);
                 passworderror.setVisible(true);
             }
-            else if(usernametf.getText().equals(""))
+            else if(usernametf.getText().equals("") && pstring.equals(password))
             {
                 passworderror.setVisible(false);
                 usernameerror.setText("Please enter username!");
                 usernameerror.setVisible(true);
             }
             
-            else if(pstring.equals(""))
+            else if(pstring.equals("") && usernametf.getText().equals(Admin))
             {
                 usernameerror.setVisible(false);
                 passworderror.setText("Please enter password!");
                 passworderror.setVisible(true);
             }
-            else
+            
+            else if(usernametf.getText().equals(Admin) && pstring!=Password)
+            {
+                passworderror.setText("Please enter correct password!");
+                passworderror.setVisible(true);
+                usernameerror.setVisible(false);
+            }
+            
+            else if(usernametf.getText()!=Admin && pstring.equals(Password))
+            {
+                usernameerror.setText("Please enter correct username!");
+                usernameerror.setVisible(true);
+                passworderror.setVisible(false);
+            }
+            
+            else if(usernametf.getText()!=Admin && pstring!=Password)
             {
                 usernameerror.setText("Please enter correct username!");
                 passworderror.setText("Please enter correct password!");
