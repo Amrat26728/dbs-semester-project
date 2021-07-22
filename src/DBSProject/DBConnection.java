@@ -2,6 +2,7 @@ package DBSProject;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import javax.swing.JOptionPane;
 
 
 public class DBConnection {
@@ -10,10 +11,10 @@ public class DBConnection {
        public Connection getConnection(){
         try{
             Class.forName("oracle.jdbc.OracleDriver");
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scott","tiger");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","scott","tiger123");
             
         }catch(Exception e){
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, e, null, JOptionPane.WARNING_MESSAGE);
         }
         return con;
        }
