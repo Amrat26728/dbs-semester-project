@@ -307,7 +307,7 @@ public class SignUp extends javax.swing.JFrame {
         
         char ch = evt.getKeyChar();
         
-        if(Character.isLetter(ch) || Character.isISOControl(ch))
+        if(Character.isLetter(ch) || Character.isISOControl(ch) || Character.isSpaceChar(ch))
         {
             nametfsignup.setEditable(true);
         }

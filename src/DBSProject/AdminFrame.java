@@ -382,10 +382,10 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(roomallocationtable);
 
         roomallocationtablepanel.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 560, 250);
+        jScrollPane1.setBounds(0, 0, 560, 240);
 
         getContentPane().add(roomallocationtablepanel);
-        roomallocationtablepanel.setBounds(630, 420, 560, 250);
+        roomallocationtablepanel.setBounds(630, 420, 560, 240);
 
         adminframepanel.setBackground(new java.awt.Color(248, 245, 241));
         adminframepanel.setLayout(null);
@@ -438,6 +438,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private void deleteacrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteacrecordActionPerformed
 
         boolean check=false;
+        boolean check1 = false;
+        boolean check2 = false;
         
        try{
            String roll_no=JOptionPane.showInputDialog(null, "Enter Roll No: ");
@@ -471,6 +473,34 @@ public class AdminFrame extends javax.swing.JFrame {
                }
            }
            
+           ResultSet rs2 = s.executeQuery("select std_1_roll_no from room_allocation");
+            while(rs2.next())
+            {
+                if(rs2.getString("std_1_roll_no")==null)
+                {
+                    continue;
+                }
+                
+                else if(rs2.getString("std_1_roll_no").equals(roll_no))
+                {
+                    check1 = true;
+                }
+            }
+            
+            ResultSet rs3 = s.executeQuery("select std_2_roll_no from room_allocation");
+            while(rs3.next())
+            {
+                if(rs3.getString("std_2_roll_no")==null)
+                {
+                    continue;
+                }
+                
+                else if(rs3.getString("std_2_roll_no").equals(roll_no))
+                {
+                    check2 = true;
+                }
+            }
+           
            if(check)
            {
                
@@ -479,6 +509,17 @@ public class AdminFrame extends javax.swing.JFrame {
 		if(response==JOptionPane.YES_OPTION)
 		{
                     s.executeQuery("delete from hostel_data_ac where roll_no='"+roll_no+"'");
+                    if(check1)
+                    {
+                        s.executeQuery("update room_allocation set std_1_roll_no = '' where std_1_roll_no = '"+roll_no+"'");
+                        s.executeQuery("commit");
+                    }
+
+                    else if(check2)
+                    {
+                        s.executeQuery("update room_allocation set std_2_roll_no = '' where std_2_roll_no = '"+roll_no+"'");
+                        s.executeQuery("commit");
+                    }
                     s.executeQuery("commit");
                     JOptionPane.showMessageDialog(null, "Record Deleted");
 		}
@@ -591,7 +632,7 @@ public class AdminFrame extends javax.swing.JFrame {
         try{
              Connection con=new DBConnection().getConnection();
              Statement s=con.createStatement();
-             ResultSet rs=s.executeQuery("select * from hostel_data_ac");
+             ResultSet rs=s.executeQuery("select * from hostel_data_ac order by roll_no asc");
              while(rs.next())
              {
                  check=false;
@@ -636,7 +677,7 @@ public class AdminFrame extends javax.swing.JFrame {
         try{
              Connection con=new DBConnection().getConnection();
              Statement s=con.createStatement();
-             ResultSet rs=s.executeQuery("select * from hostel_data_non_ac");
+             ResultSet rs=s.executeQuery("select * from hostel_data_non_ac order by roll_no asc");
              while(rs.next())
              {
                  check=false;
@@ -719,16 +760,6 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "You have entered nothing!", null, JOptionPane.WARNING_MESSAGE);
         }
         
-        else if(Integer.valueOf(rooms)<=0)
-        {
-            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
-        else if(Pattern.matches("^[A-z]+$", rooms))
-        {
-            JOptionPane.showMessageDialog(null, "Enter only numbers!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
         else if(Pattern.matches("^[0-9]+$", rooms))
         {
        
@@ -774,6 +805,16 @@ public class AdminFrame extends javax.swing.JFrame {
         
         }
         
+        else if(Pattern.matches("[a-z0-9A-Z]+", rooms))
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive numbers!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else if(Integer.valueOf(rooms)<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
     }//GEN-LAST:event_addacroomsActionPerformed
 
     private void addnonacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnonacroomsActionPerformed
@@ -788,16 +829,6 @@ public class AdminFrame extends javax.swing.JFrame {
         else if(rooms.length()<=0)
         {
             JOptionPane.showMessageDialog(null, "You have entered nothing!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
-        else if(Integer.valueOf(rooms)<=0)
-        {
-            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
-        else if(Pattern.matches("^[A-z]+$", rooms))
-        {
-            JOptionPane.showMessageDialog(null, "Enter only numeric!", null, JOptionPane.WARNING_MESSAGE);
         }
         
         else if(Pattern.matches("^[0-9]+$", rooms))
@@ -842,6 +873,16 @@ public class AdminFrame extends javax.swing.JFrame {
                }
             }
         
+        }
+        
+        else if(Pattern.matches("[a-z0-9A-Z]+", rooms))
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive numbers!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else if(Integer.valueOf(rooms)<=0)
+        {
+            JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
         }
         
     }//GEN-LAST:event_addnonacroomsActionPerformed
@@ -926,6 +967,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private void deletenonacrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletenonacrecordActionPerformed
         
         boolean check=false;
+        boolean check1 = false;
+        boolean check2 = false;
         
        try{
              String roll_no=JOptionPane.showInputDialog(null, "Enter Roll No: ");
@@ -959,6 +1002,34 @@ public class AdminFrame extends javax.swing.JFrame {
                }
            }
            
+           ResultSet rs2 = s.executeQuery("select std_1_roll_no from room_allocation_2");
+            while(rs2.next())
+            {
+                if(rs2.getString("std_1_roll_no")==null)
+                {
+                    continue;
+                }
+                
+                else if(rs2.getString("std_1_roll_no").equals(roll_no))
+                {
+                    check1 = true;
+                }
+            }
+            
+            ResultSet rs3 = s.executeQuery("select std_2_roll_no from room_allocation_2");
+            while(rs3.next())
+            {
+                if(rs3.getString("std_2_roll_no")==null)
+                {
+                    continue;
+                }
+                
+                else if(rs3.getString("std_2_roll_no").equals(roll_no))
+                {
+                    check2 = true;
+                }
+            }
+           
            if(check)
            {
                 int response = JOptionPane.showConfirmDialog(null, "Sure? Do you want to delete?",null,JOptionPane.YES_NO_OPTION);
@@ -966,6 +1037,17 @@ public class AdminFrame extends javax.swing.JFrame {
 		if(response==JOptionPane.YES_OPTION)
 		{
                     s.executeQuery("delete from hostel_data_non_ac where roll_no='"+roll_no+"'");
+                    if(check1)
+                    {
+                        s.executeQuery("update room_allocation_2 set std_1_roll_no = '' where std_1_roll_no = '"+roll_no+"'");
+                        s.executeQuery("commit");
+                    }
+
+                    else if(check2)
+                    {
+                        s.executeQuery("update room_allocation_2 set std_2_roll_no = '' where std_2_roll_no = '"+roll_no+"'");
+                        s.executeQuery("commit");
+                    }
                     s.executeQuery("commit");
                     JOptionPane.showMessageDialog(null, "Record Deleted");
 		}
@@ -1066,7 +1148,7 @@ public class AdminFrame extends javax.swing.JFrame {
         try{
             Connection con = new DBConnection().getConnection();
             Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("select roll_no, name from signup_data");
+            ResultSet rs = s.executeQuery("select roll_no, name from signup_data order by roll_no asc");
             while(rs.next())
             {
                 check = false;
