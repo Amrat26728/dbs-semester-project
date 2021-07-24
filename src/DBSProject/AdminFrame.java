@@ -78,6 +78,8 @@ public class AdminFrame extends javax.swing.JFrame {
         getacroomallocation = new javax.swing.JButton();
         getnonacroomallocation = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        acrooms = new javax.swing.JButton();
+        nonacrooms = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -311,7 +313,7 @@ public class AdminFrame extends javax.swing.JFrame {
         title.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         roomsmenupanel.add(title);
-        title.setBounds(510, 6, 320, 30);
+        title.setBounds(540, 0, 320, 40);
 
         getContentPane().add(roomsmenupanel);
         roomsmenupanel.setBounds(240, 380, 950, 40);
@@ -382,10 +384,10 @@ public class AdminFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(roomallocationtable);
 
         roomallocationtablepanel.add(jScrollPane1);
-        jScrollPane1.setBounds(0, 0, 560, 240);
+        jScrollPane1.setBounds(0, 0, 490, 240);
 
         getContentPane().add(roomallocationtablepanel);
-        roomallocationtablepanel.setBounds(630, 420, 560, 240);
+        roomallocationtablepanel.setBounds(700, 420, 490, 240);
 
         adminframepanel.setBackground(new java.awt.Color(248, 245, 241));
         adminframepanel.setLayout(null);
@@ -399,7 +401,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(getacroomallocation);
-        getacroomallocation.setBounds(310, 510, 250, 30);
+        getacroomallocation.setBounds(260, 500, 200, 30);
 
         getnonacroomallocation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getnonacroomallocation.setText("Non AC Room Allocation");
@@ -410,7 +412,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(getnonacroomallocation);
-        getnonacroomallocation.setBounds(310, 560, 250, 30);
+        getnonacroomallocation.setBounds(260, 550, 200, 30);
 
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("SignUp Data");
@@ -420,10 +422,32 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(jButton1);
-        jButton1.setBounds(310, 610, 250, 30);
+        jButton1.setBounds(260, 600, 200, 30);
+
+        acrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        acrooms.setText("AC Rooms");
+        acrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        acrooms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acroomsActionPerformed(evt);
+            }
+        });
+        adminframepanel.add(acrooms);
+        acrooms.setBounds(480, 500, 200, 30);
+
+        nonacrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nonacrooms.setText("Non AC Rooms");
+        nonacrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nonacrooms.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nonacroomsActionPerformed(evt);
+            }
+        });
+        adminframepanel.add(nonacrooms);
+        nonacrooms.setBounds(480, 550, 200, 30);
 
         getContentPane().add(adminframepanel);
-        adminframepanel.setBounds(0, 10, 1190, 670);
+        adminframepanel.setBounds(0, 10, 1190, 660);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -749,7 +773,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void addacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addacroomsActionPerformed
         
         String rooms = JOptionPane.showInputDialog(null, "Enter No of rooms");
-        
+        int counter=0;
         if(rooms==null)
         {
             
@@ -766,7 +790,7 @@ public class AdminFrame extends javax.swing.JFrame {
             int roomsInt = Integer.parseInt(rooms);
             if(roomsInt<=0)
             {
-                JOptionPane.showMessageDialog(null, "Enter Correct value!", "Error message", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Enter Positive value!", "Error message", JOptionPane.ERROR_MESSAGE);
             }
 
             else
@@ -786,6 +810,17 @@ public class AdminFrame extends javax.swing.JFrame {
                     if(check)
                     {
                         s.executeQuery("insert into rooms values("+rooms+","+0+")");
+                        ResultSet rs2 = s.executeQuery("select * from ac_rooms");
+                        while(rs2.next())
+                        {
+                            counter++;
+                        }
+
+                        for(int i=1;i<=roomsInt;i++)
+                        {
+                            s.executeQuery("insert into ac_rooms values('AC"+(counter+i)+"')");
+                            check = true;
+                        }
                         s.executeQuery("commit");
                     }
                     
@@ -794,6 +829,16 @@ public class AdminFrame extends javax.swing.JFrame {
                         int roomsValue=Integer.parseInt(str);
                         int updatedRooms = roomsValue+roomsInt;
                         s.executeQuery("update rooms set ac_rooms="+updatedRooms);
+                        ResultSet rs2 = s.executeQuery("select * from ac_rooms");
+                        while(rs2.next())
+                        {
+                            counter++;
+                        }
+
+                        for(int i=1;i<=roomsInt;i++)
+                        {
+                            s.executeQuery("insert into ac_rooms values('AC"+(counter+i)+"')");
+                        }
                         s.executeQuery("commit");
                     }
                     con.close();
@@ -820,7 +865,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void addnonacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnonacroomsActionPerformed
        
         String rooms = JOptionPane.showInputDialog(null, "Enter No of rooms");
-        
+        int counter=0;
         if(rooms==null)
         {
             
@@ -857,6 +902,17 @@ public class AdminFrame extends javax.swing.JFrame {
                     if(check)
                     {
                         s.executeQuery("insert into rooms values("+0+","+rooms+")");
+                        ResultSet rs2 = s.executeQuery("select * from non_ac_rooms");
+                        while(rs2.next())
+                        {
+                            counter++;
+                        }
+
+                        for(int i=1;i<=roomsInt;i++)
+                        {
+                            s.executeQuery("insert into non_ac_rooms values('NAC"+(counter+i)+"')");
+                            s.executeQuery("commit");
+                        }
                         s.executeQuery("commit");
                     }
                     else
@@ -864,6 +920,17 @@ public class AdminFrame extends javax.swing.JFrame {
                         int roomsValue=Integer.parseInt(str);
                         int updatedRooms = roomsValue+roomsInt;
                         s.executeQuery("update rooms set non_ac_rooms="+updatedRooms);
+                        ResultSet rs2 = s.executeQuery("select * from non_ac_rooms");
+                        while(rs2.next())
+                        {
+                            counter++;
+                        }
+
+                        for(int i=1;i<=roomsInt;i++)
+                        {
+                            s.executeQuery("insert into non_ac_rooms values('NAC"+(counter+i)+"')");
+                            s.executeQuery("commit");
+                        }
                         s.executeQuery("commit");
                     }
                     con.close();
@@ -1171,6 +1238,64 @@ public class AdminFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void acroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acroomsActionPerformed
+        
+        int sno = 0;
+        title.setText("Available AC Rooms");
+        javax.swing.table.DefaultTableModel model;
+        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
+        try{
+            Connection con=new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            
+            ResultSet rs = s.executeQuery("select * from ac_rooms");
+            while(rs.next())
+            {
+                sno++;
+                String str = rs.getString(1);
+                String s_no = String.valueOf(sno);
+                String[] data={s_no, str};
+                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                model.addRow(data);
+            }
+            
+            con.close();
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_acroomsActionPerformed
+
+    private void nonacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonacroomsActionPerformed
+        
+        int sno = 0;
+        title.setText("Available Non AC Rooms");
+        javax.swing.table.DefaultTableModel model;
+        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
+        try{
+            Connection con=new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            
+            ResultSet rs = s.executeQuery("select * from non_ac_rooms");
+            while(rs.next())
+            {
+                sno++;
+                String str = rs.getString(1);
+                String s_no = String.valueOf(sno);
+                String[] data={s_no, str};
+                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                model.addRow(data);
+            }
+            
+            con.close();
+        }catch(Exception e)
+        {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_nonacroomsActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1208,6 +1333,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Rooms;
+    private javax.swing.JButton acrooms;
     private javax.swing.JLabel acsearchicon;
     private javax.swing.JButton addacrooms;
     private javax.swing.JButton addnonacrooms;
@@ -1228,6 +1354,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JPanel menu;
     private javax.swing.JLabel menulabel;
     private javax.swing.JPanel menupanel;
+    private javax.swing.JButton nonacrooms;
     private javax.swing.JLabel nonacsearchicon;
     private javax.swing.JTable roomallocationtable;
     private javax.swing.JPanel roomallocationtablepanel;
