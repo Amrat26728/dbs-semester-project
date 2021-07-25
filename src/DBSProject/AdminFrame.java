@@ -425,7 +425,7 @@ public class AdminFrame extends javax.swing.JFrame {
         jButton1.setBounds(260, 600, 200, 30);
 
         acrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        acrooms.setText("AC Rooms");
+        acrooms.setText("Available AC Rooms");
         acrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         acrooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -436,7 +436,7 @@ public class AdminFrame extends javax.swing.JFrame {
         acrooms.setBounds(480, 500, 200, 30);
 
         nonacrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        nonacrooms.setText("Non AC Rooms");
+        nonacrooms.setText("Available Non AC Rooms");
         nonacrooms.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nonacrooms.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -773,7 +773,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void addacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addacroomsActionPerformed
         
         String rooms = JOptionPane.showInputDialog(null, "Enter No of rooms");
-        int counter=0;
+        
         if(rooms==null)
         {
             
@@ -798,8 +798,22 @@ public class AdminFrame extends javax.swing.JFrame {
                 String str=null;
                 boolean check=true;
                try{
+                    int counter = 0;
                     Connection con=new DBConnection().getConnection();
                     Statement s=con.createStatement();
+                    ResultSet rs2 = s.executeQuery("select * from ac_rooms_allocation");
+                    while(rs2.next())
+                    {
+                        counter++;
+                    }
+
+                    for(int i=1;i<=roomsInt;i++)
+                    {
+                        s.executeQuery("insert into ac_rooms_allocation values('AC"+(counter+i)+"','"+" "+"','"+" "+"')");
+                        s.executeQuery("commit");
+                    }
+                    
+                    
                     ResultSet rs=s.executeQuery("select ac_rooms from rooms");
                     while(rs.next())
                     {
@@ -810,17 +824,6 @@ public class AdminFrame extends javax.swing.JFrame {
                     if(check)
                     {
                         s.executeQuery("insert into rooms values("+rooms+","+0+")");
-                        ResultSet rs2 = s.executeQuery("select * from ac_rooms");
-                        while(rs2.next())
-                        {
-                            counter++;
-                        }
-
-                        for(int i=1;i<=roomsInt;i++)
-                        {
-                            s.executeQuery("insert into ac_rooms values('AC"+(counter+i)+"')");
-                            check = true;
-                        }
                         s.executeQuery("commit");
                     }
                     
@@ -829,16 +832,6 @@ public class AdminFrame extends javax.swing.JFrame {
                         int roomsValue=Integer.parseInt(str);
                         int updatedRooms = roomsValue+roomsInt;
                         s.executeQuery("update rooms set ac_rooms="+updatedRooms);
-                        ResultSet rs2 = s.executeQuery("select * from ac_rooms");
-                        while(rs2.next())
-                        {
-                            counter++;
-                        }
-
-                        for(int i=1;i<=roomsInt;i++)
-                        {
-                            s.executeQuery("insert into ac_rooms values('AC"+(counter+i)+"')");
-                        }
                         s.executeQuery("commit");
                     }
                     con.close();
@@ -865,7 +858,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void addnonacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addnonacroomsActionPerformed
        
         String rooms = JOptionPane.showInputDialog(null, "Enter No of rooms");
-        int counter=0;
+        
         if(rooms==null)
         {
             
@@ -878,11 +871,11 @@ public class AdminFrame extends javax.swing.JFrame {
         
         else if(Pattern.matches("^[0-9]+$", rooms))
         {
-        
+       
             int roomsInt = Integer.parseInt(rooms);
             if(roomsInt<=0)
             {
-                JOptionPane.showMessageDialog(null, "Enter Correct value!", "Error message", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Enter Positive value!", "Error message", JOptionPane.ERROR_MESSAGE);
             }
 
             else
@@ -890,8 +883,22 @@ public class AdminFrame extends javax.swing.JFrame {
                 String str=null;
                 boolean check=true;
                try{
+                    int counter = 0;
                     Connection con=new DBConnection().getConnection();
                     Statement s=con.createStatement();
+                    ResultSet rs2 = s.executeQuery("select * from non_ac_rooms_allocation");
+                    while(rs2.next())
+                    {
+                        counter++;
+                    }
+
+                    for(int i=1;i<=roomsInt;i++)
+                    {
+                        s.executeQuery("insert into non_ac_rooms_allocation values('NAC"+(counter+i)+"','"+" "+"','"+" "+"')");
+                        s.executeQuery("commit");
+                    }
+                    
+                    
                     ResultSet rs=s.executeQuery("select non_ac_rooms from rooms");
                     while(rs.next())
                     {
@@ -902,35 +909,14 @@ public class AdminFrame extends javax.swing.JFrame {
                     if(check)
                     {
                         s.executeQuery("insert into rooms values("+0+","+rooms+")");
-                        ResultSet rs2 = s.executeQuery("select * from non_ac_rooms");
-                        while(rs2.next())
-                        {
-                            counter++;
-                        }
-
-                        for(int i=1;i<=roomsInt;i++)
-                        {
-                            s.executeQuery("insert into non_ac_rooms values('NAC"+(counter+i)+"')");
-                            s.executeQuery("commit");
-                        }
                         s.executeQuery("commit");
                     }
+                    
                     else
-                    {  
+                    {
                         int roomsValue=Integer.parseInt(str);
                         int updatedRooms = roomsValue+roomsInt;
                         s.executeQuery("update rooms set non_ac_rooms="+updatedRooms);
-                        ResultSet rs2 = s.executeQuery("select * from non_ac_rooms");
-                        while(rs2.next())
-                        {
-                            counter++;
-                        }
-
-                        for(int i=1;i<=roomsInt;i++)
-                        {
-                            s.executeQuery("insert into non_ac_rooms values('NAC"+(counter+i)+"')");
-                            s.executeQuery("commit");
-                        }
                         s.executeQuery("commit");
                     }
                     con.close();
@@ -1146,17 +1132,34 @@ public class AdminFrame extends javax.swing.JFrame {
         try{
             Connection con=new DBConnection().getConnection();
             Statement s=con.createStatement();
-            ResultSet rs=s.executeQuery("select * from room_allocation order by room_no");
+            ResultSet rs=s.executeQuery("select * from ac_rooms_allocation order by room_no");
             while(rs.next())
             {
-                check=false;
-                String str1=String.valueOf(rs.getInt(1));
+                String str1=rs.getString(1);
                 String str2=rs.getString(2);
                 String str3=rs.getString(3);
                 
-                String[] data={str1,str2,str3};
-                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
-                model.addRow(data);
+                if(str2.equals(" ")==false && str3.equals(" ")==false)
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
+                if(str2.equals(" ") && str3.equals(" ")==false)
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
+                if(str2.equals(" ")==false && str3.equals(" "))
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
             }
             
             if(check)
@@ -1172,25 +1175,42 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void getnonacroomallocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getnonacroomallocationActionPerformed
 
-        title.setText("Non AC Room Allocation Data");
-        boolean check=true;
+        title.setText("AC Room Allocation Data");
         
         javax.swing.table.DefaultTableModel model;
+        boolean check=true;
         roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"Room No", "Student 1", "Students 2"}));
         try{
             Connection con=new DBConnection().getConnection();
             Statement s=con.createStatement();
-            ResultSet rs=s.executeQuery("select * from room_allocation_2");
+            ResultSet rs=s.executeQuery("select * from non_ac_rooms_allocation order by room_no");
             while(rs.next())
             {
-                check=false;
-                String str1=String.valueOf(rs.getInt(1));
+                String str1=rs.getString(1);
                 String str2=rs.getString(2);
                 String str3=rs.getString(3);
                 
-                String[] data={str1,str2,str3};
-                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
-                model.addRow(data);
+                if(str2.equals(" ")==false && str3.equals(" ")==false)
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
+                if(str2.equals(" ") && str3.equals(" ")==false)
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
+                if(str2.equals(" ")==false && str3.equals(" "))
+                {
+                    String[] data={str1,str2,str3};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check=false;
+                }
             }
             
             if(check)
@@ -1241,6 +1261,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void acroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acroomsActionPerformed
         
         int sno = 0;
+        boolean check = true;
         title.setText("Available AC Rooms");
         javax.swing.table.DefaultTableModel model;
         roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
@@ -1248,15 +1269,46 @@ public class AdminFrame extends javax.swing.JFrame {
             Connection con=new DBConnection().getConnection();
             Statement s = con.createStatement();
             
-            ResultSet rs = s.executeQuery("select * from ac_rooms");
+            ResultSet rs = s.executeQuery("select * from ac_rooms_allocation");
             while(rs.next())
             {
-                sno++;
-                String str = rs.getString(1);
-                String s_no = String.valueOf(sno);
-                String[] data={s_no, str};
-                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
-                model.addRow(data);
+                if(rs.getString("std_1_roll_no").equals(" ") && rs.getString("std_2_roll_no").equals(" ")==false)
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+                
+                if(rs.getString("std_1_roll_no").equals(" ")==false && rs.getString("std_2_roll_no").equals(" "))
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+                
+                if(rs.getString("std_1_roll_no").equals(" ") && rs.getString("std_2_roll_no").equals(" "))
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "There is not empty room available.");
             }
             
             con.close();
@@ -1270,6 +1322,7 @@ public class AdminFrame extends javax.swing.JFrame {
     private void nonacroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nonacroomsActionPerformed
         
         int sno = 0;
+        boolean check=true;
         title.setText("Available Non AC Rooms");
         javax.swing.table.DefaultTableModel model;
         roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
@@ -1277,15 +1330,53 @@ public class AdminFrame extends javax.swing.JFrame {
             Connection con=new DBConnection().getConnection();
             Statement s = con.createStatement();
             
-            ResultSet rs = s.executeQuery("select * from non_ac_rooms");
+            ResultSet rs = s.executeQuery("select * from non_ac_rooms_allocation");
             while(rs.next())
             {
-                sno++;
-                String str = rs.getString(1);
-                String s_no = String.valueOf(sno);
-                String[] data={s_no, str};
-                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
-                model.addRow(data);
+//                sno++;
+//                String str = rs.getString(1);
+//                String s_no = String.valueOf(sno);
+//                String[] data={s_no, str};
+//                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+//                model.addRow(data);
+                
+                if(rs.getString("std_1_roll_no").equals(" ") && rs.getString("std_2_roll_no").equals(" "))
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+                
+                if(rs.getString("std_1_roll_no").equals(" ")==false && rs.getString("std_2_roll_no").equals(" "))
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+                
+                if(rs.getString("std_1_roll_no").equals(" ") && rs.getString("std_2_roll_no").equals(" ")==false)
+                {
+                    sno++;
+                    String str = rs.getString("room_no");
+                    String s_no = String.valueOf(sno);
+                    String[] data={s_no, str};
+                    model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
+                    model.addRow(data);
+                    check = false;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "There is not empty room available.");
             }
             
             con.close();

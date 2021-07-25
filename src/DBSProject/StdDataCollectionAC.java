@@ -382,147 +382,138 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         
         else
         {
-            String Roll_no=rollnotf.getText();
-        
-            boolean check=false;
-            boolean check2=false;
-            int counter1=0;
-            int counter2=0;
-            
-        
-        try{
-            Connection con2 = new DBConnection().getConnection();
-            Statement s=con2.createStatement();
-            
-            ResultSet rs=s.executeQuery("select roll_no from hostel_data_ac");
-            while(rs.next())
-            {
-                String string=rs.getString(1);
-                if(string.equals(Roll_no))
-                {
-                    check=true;
-                    break;
-                }
-            }
-            
-            ResultSet rs1=s.executeQuery("select roll_no from hostel_data_non_ac");
-            while(rs1.next())
-            {
-                String string=rs1.getString(1);
-                if(string.equals(Roll_no))
-                {
-                    check2=true;
-                    break;
-                }
-            }
-            
-            if(check)
-            {
-                JOptionPane.showMessageDialog(null, "This Roll No is already allowed AC room!", null, JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-            else if(check2)
-            {
-                JOptionPane.showMessageDialog(null, "This Roll No is already allowed Non AC room", null, JOptionPane.INFORMATION_MESSAGE);
-            }
-            
-            else
-            {
-                String str=null;
-                
-                ResultSet rs2=s.executeQuery("select room_no from room_allocation");
-                while(rs2.next())
-                {
-                    counter1++;
-                }
-                
-                ResultSet rs3=s.executeQuery("select ac_rooms from rooms");
-                while(rs3.next())
-                {
-                    str=String.valueOf(rs3.getInt(1));
-                }
-                
-                counter2=Integer.parseInt(str);
-                
-                if(counter1<counter2)
-                {
-                    String Name=nametf.getText();
-                    String Fname=fnametf.getText();
-                    double Contact=Double.parseDouble(contacttf.getText());
-                    String Blood_group=(String)bg.getSelectedItem();
-                    String Country=countrytf.getText();
-                    String Province=provincetf.getText();
-                    String District=districttf.getText();
-                    String Address=addresstf.getText();
-                    String Email=emailtf.getText();
-                    double Emerg_contact=Double.parseDouble(emergcontacttf.getText());
-
-                    if(Pattern.matches("^[A-z]+$",Roll_no) || Pattern.matches("^[0-9]+$",Roll_no))
+            boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false;
+            String roomno=null;
+            int rooms = 0;
+            String rollno = rollnotf.getText();
+           try{
+               Connection con = new DBConnection().getConnection();
+               Statement s = con.createStatement();
+               
+               ResultSet rs3 = s.executeQuery("select roll_no from hostel_data_ac");
+               while(rs3.next())
+               {
+                   if(rs3.getString(1).equals(rollno))
+                   {
+                       check3 = true;
+                       break;
+                   }
+               }
+               
+               ResultSet rs4 = s.executeQuery("select roll_no from hostel_data_non_ac");
+               while(rs4.next())
+               {
+                   if(rs4.getString(1).equals(rollno))
+                   {
+                       check4 = true;
+                       break;
+                   }
+               }
+               
+               if(emailtf.getText().endsWith("@gmail.com") || emailtf.getText().endsWith("@email.com"))
+               {
+                    if(check3)
                     {
-                        JOptionPane.showMessageDialog(null, "Roll no is not in correct pattern!",null,JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "This roll no is already allocated a AC room");
+                    }
+
+                    else if (check4)
+                    {
+                        JOptionPane.showMessageDialog(null, "This roll no is already allocated a Non AC room");
                     }
 
                     else
                     {
-                        if(Email.endsWith("@gmail.com") || Email.endsWith("@email.com"))
-                        {
-                            int counter=0;
-                            s.executeQuery("insert into hostel_data_AC(roll_no, name, f_name, contact_no, blood_group, country, province, district, address, email, emerg_contact, room_allow_date) values('"+Roll_no+"','"+Name+"','"+Fname+"','"+Contact+"','"+Blood_group+"','"+Country+"','"+Province+"','"+District+"','"+Address+"','"+Email+"','"+Emerg_contact+"','"+dateformat.format(date)+"')");
-                            s.executeQuery("commit");
-                            ResultSet rs4=s.executeQuery("select * from room_allocation");
-                            while(rs4.next())
-                            {
-                                counter++;
-                                String str2=rs4.getString(3);
-                                if(str2.equals(" "))
-                                {
-                                    check=true;
-                                }
-                            }
+                         ResultSet rs = s.executeQuery("select ac_rooms from rooms");
+                         while(rs.next())
+                         {
+                             rooms = rs.getInt(1);
+                         }
+                         if(rooms==0)
+                         {
+                             JOptionPane.showMessageDialog(null, "AC room is not available!", null, JOptionPane.ERROR_MESSAGE);
+                         }
 
-                            if(counter==0)
-                            {
-                                s.executeQuery("insert into room_allocation(room_no, std_1_roll_no, std_2_roll_no) values("+(counter+1)+",'"+Roll_no+"','"+" "+"')");
-                                s.executeQuery("commit");
-                                JOptionPane.showMessageDialog(null, "your room no is "+(counter+1));
-                            }
+                         else 
+                         {
+                              ResultSet rs2 = s.executeQuery("select * from ac_rooms_allocation order by room_no asc");
+                              while(rs2.next())
+                              {
+                                  String str1 = rs2.getString("std_1_roll_no");
+                                  String str2 = rs2.getString("std_2_roll_no");
+                                  if(str1.equals(" "))
+                                  {
+                                      check1 = true;
+                                      roomno = rs2.getString(1);
+                                      break;
+                                  }
 
-                            else
-                            {
-                                if(check)
-                                {
-                                    s.executeQuery("update room_allocation set std_2_roll_no='"+Roll_no+"' where room_no="+counter);
-                                    s.executeQuery("commit");
-                                    JOptionPane.showMessageDialog(null, "Your room no is "+counter);
-                                }
+                                  else if(str2.equals(" "))
+                                  {
+                                      check2 = true;
+                                      roomno = rs2.getString(1);
+                                      break;
+                                  }
 
-                                else
-                                {
-                                    s.executeQuery("insert into room_allocation(room_no, std_1_roll_no, std_2_roll_no) values("+(counter+1)+",'"+Roll_no+"','"+" "+"')");
-                                    s.executeQuery("commit");
-                                    JOptionPane.showMessageDialog(null, "Your room no is "+(counter+1));
-                                }
-                            }
-                            
-                        }
+                                  else
+                                  {
+                                      check5 = true;
+                                  }
+                              }
 
-                        else
-                        {
-                            JOptionPane.showMessageDialog(null, "Pattern of the email is not correct!",null,JOptionPane.ERROR_MESSAGE);
-                        }
+                              if(check1)
+                              {
+                                  String Name=nametf.getText();
+                                  String Fname=fnametf.getText();
+                                  double Contact=Double.parseDouble(contacttf.getText());
+                                  String Blood_group=(String)bg.getSelectedItem();
+                                  String Country=countrytf.getText();
+                                  String Province=provincetf.getText();
+                                  String District=districttf.getText();
+                                  String Address=addresstf.getText();
+                                  String Email=emailtf.getText();
+                                  double Emerg_contact=Double.parseDouble(emergcontacttf.getText());
+                                  s.executeQuery("insert into hostel_data_ac(roll_no, name, f_name, contact_no, blood_group, country, province, district, address, email, emerg_contact, room_allow_date) values('"+rollno+"','"+Name+"','"+Fname+"','"+Contact+"','"+Blood_group+"','"+Country+"','"+Province+"','"+District+"','"+Address+"','"+Email+"','"+Emerg_contact+"','"+dateformat.format(date)+"')");
+                                  s.executeQuery("update ac_rooms_allocation set std_1_roll_no = '"+rollno+"' where room_no = '"+roomno+"'");
+                                  s.executeQuery("commit");
+                                  JOptionPane.showMessageDialog(null, "Your room number is "+roomno);
+                              }
+
+                              else if (check2)
+                              {
+                                  String Name=nametf.getText();
+                                  String Fname=fnametf.getText();
+                                  double Contact=Double.parseDouble(contacttf.getText());
+                                  String Blood_group=(String)bg.getSelectedItem();
+                                  String Country=countrytf.getText();
+                                  String Province=provincetf.getText();
+                                  String District=districttf.getText();
+                                  String Address=addresstf.getText();
+                                  String Email=emailtf.getText();
+                                  double Emerg_contact=Double.parseDouble(emergcontacttf.getText());
+                                  s.executeQuery("insert into hostel_data_ac(roll_no, name, f_name, contact_no, blood_group, country, province, district, address, email, emerg_contact, room_allow_date) values('"+rollno+"','"+Name+"','"+Fname+"','"+Contact+"','"+Blood_group+"','"+Country+"','"+Province+"','"+District+"','"+Address+"','"+Email+"','"+Emerg_contact+"','"+dateformat.format(date)+"')");
+                                  s.executeQuery("update ac_rooms_allocation set std_2_roll_no = '"+rollno+"' where room_no = '"+roomno+"'");
+                                  s.executeQuery("commit");
+                                  JOptionPane.showMessageDialog(null, "Your room number is "+roomno);
+                              }
+
+                              else if(check5)
+                              {
+                                  JOptionPane.showMessageDialog(null, "AC room is not available!", null, JOptionPane.ERROR_MESSAGE);
+                              }
+                         }
 
                     }
-
-                }
-                else
-                {
-                    JOptionPane.showMessageDialog(null, "Room is not available");
-                }
+               }
+               
+               else
+               {
+                   JOptionPane.showMessageDialog(null, "Pattern of the email is not correct!", null, JOptionPane.ERROR_MESSAGE);
+               }
+               
+            }catch(SQLException e){
+                JOptionPane.showMessageDialog(null,e);
             }
-            con2.close();
-        }catch(SQLException e){
-            JOptionPane.showMessageDialog(null,e);
-        }
         
         }
         
