@@ -447,7 +447,7 @@ public class AdminFrame extends javax.swing.JFrame {
         nonacrooms.setBounds(480, 550, 200, 30);
 
         getContentPane().add(adminframepanel);
-        adminframepanel.setBounds(0, 10, 1190, 660);
+        adminframepanel.setBounds(0, 0, 1190, 670);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -680,7 +680,7 @@ public class AdminFrame extends javax.swing.JFrame {
              
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Table is empty!");
+                JOptionPane.showMessageDialog(null, "There is no data!");
             }
              
              con.close();
@@ -725,7 +725,7 @@ public class AdminFrame extends javax.swing.JFrame {
              
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Table is empty!");
+                JOptionPane.showMessageDialog(null, "There is no data!");
             }
              
              con.close();
@@ -1164,7 +1164,7 @@ public class AdminFrame extends javax.swing.JFrame {
             
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Table is empty!");
+                JOptionPane.showMessageDialog(null, "There is no room allocation data!");
             }
             con.close();
         }catch(SQLException e){
@@ -1175,7 +1175,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
     private void getnonacroomallocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getnonacroomallocationActionPerformed
 
-        title.setText("AC Room Allocation Data");
+        title.setText("Non AC Room Allocation Data");
         
         javax.swing.table.DefaultTableModel model;
         boolean check=true;
@@ -1215,7 +1215,7 @@ public class AdminFrame extends javax.swing.JFrame {
             
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Table is empty!");
+                JOptionPane.showMessageDialog(null, "There is no room allocation data!");
             }
             con.close();
         }catch(SQLException e){
@@ -1250,7 +1250,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "Table is empty!");
+                JOptionPane.showMessageDialog(null, "There is no sign up data!");
             }
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
@@ -1308,7 +1308,7 @@ public class AdminFrame extends javax.swing.JFrame {
             
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "There is not empty room available.");
+                JOptionPane.showMessageDialog(null, "There is no room available.");
             }
             
             con.close();
@@ -1376,7 +1376,7 @@ public class AdminFrame extends javax.swing.JFrame {
             
             if(check)
             {
-                JOptionPane.showMessageDialog(null, "There is not empty room available.");
+                JOptionPane.showMessageDialog(null, "There is no room available.");
             }
             
             con.close();

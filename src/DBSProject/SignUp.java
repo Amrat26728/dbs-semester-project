@@ -346,7 +346,7 @@ public class SignUp extends javax.swing.JFrame {
         
         if(RollNo.isEmpty() || pass.isEmpty())
         {
-            JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Something is wrong while Signing In!", null, JOptionPane.ERROR_MESSAGE);
         }
         
         else
