@@ -77,9 +77,10 @@ public class AdminFrame extends javax.swing.JFrame {
         adminframepanel = new javax.swing.JPanel();
         getacroomallocation = new javax.swing.JButton();
         getnonacroomallocation = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        signupdata = new javax.swing.JButton();
         acrooms = new javax.swing.JButton();
         nonacrooms = new javax.swing.JButton();
+        searchroomno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -414,15 +415,15 @@ public class AdminFrame extends javax.swing.JFrame {
         adminframepanel.add(getnonacroomallocation);
         getnonacroomallocation.setBounds(260, 550, 200, 30);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("SignUp Data");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        signupdata.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        signupdata.setText("SignUp Data");
+        signupdata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                signupdataActionPerformed(evt);
             }
         });
-        adminframepanel.add(jButton1);
-        jButton1.setBounds(260, 600, 200, 30);
+        adminframepanel.add(signupdata);
+        signupdata.setBounds(260, 600, 200, 30);
 
         acrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         acrooms.setText("Available AC Rooms");
@@ -445,6 +446,17 @@ public class AdminFrame extends javax.swing.JFrame {
         });
         adminframepanel.add(nonacrooms);
         nonacrooms.setBounds(480, 550, 200, 30);
+
+        searchroomno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        searchroomno.setText("Search Room No");
+        searchroomno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchroomno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchroomnoActionPerformed(evt);
+            }
+        });
+        adminframepanel.add(searchroomno);
+        searchroomno.setBounds(480, 600, 200, 30);
 
         getContentPane().add(adminframepanel);
         adminframepanel.setBounds(0, 0, 1190, 670);
@@ -1210,7 +1222,7 @@ public class AdminFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_getnonacroomallocationActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void signupdataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupdataActionPerformed
         
         title.setText("SignUp Data");
         boolean check = true;
@@ -1242,7 +1254,7 @@ public class AdminFrame extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_signupdataActionPerformed
 
     private void acroomsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acroomsActionPerformed
         
@@ -1378,6 +1390,74 @@ public class AdminFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_nonacroomsActionPerformed
 
+    private void searchroomnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchroomnoActionPerformed
+        
+        String rollno = JOptionPane.showInputDialog(null, "Enter Roll No:");
+        boolean check = false;
+        String roomno = null;
+        
+        try{
+            Connection con = new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("select * from ac_rooms_allocation");
+            while(rs.next())
+            {
+                if(rs.getString("std_1_roll_no").equals(rollno))
+                {
+                    roomno = rs.getString("room_no");
+                    check=true;
+                    break;
+                }
+                
+                else if(rs.getString("std_2_roll_no").equals(rollno))
+                {
+                    roomno = rs.getString("room_no");
+                    check=true;
+                    break;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "Room No of "+rollno+" is "+roomno);
+            }
+            
+            else
+            {
+                ResultSet rs2 = s.executeQuery("select * from non_ac_rooms_allocation");
+                while(rs2.next())
+                {
+                    if(rs2.getString("std_1_roll_no").equals(rollno))
+                    {
+                        roomno = rs2.getString("room_no");
+                        check = true;
+                        break;
+                    }
+                    
+                    else if(rs2.getString("std_2_roll_no").equals(rollno))
+                    {
+                        roomno = rs2.getString("room_no");
+                        check = true;
+                        break;
+                    }
+                }
+                
+                if(check)
+                {
+                    JOptionPane.showMessageDialog(null, "Room No of "+rollno+" is "+roomno);
+                }
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(null, rollno+" does not have room.");
+                }
+            }
+        }catch(SQLException e){
+            JOptionPane.showConfirmDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_searchroomnoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1431,7 +1511,6 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JButton getnonacroomallocation;
     private javax.swing.JButton guest;
     private javax.swing.JLabel inserticon;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel menu;
     private javax.swing.JLabel menulabel;
@@ -1447,6 +1526,8 @@ public class AdminFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane roomstablescrolpane;
     private javax.swing.JButton searchacrecord;
     private javax.swing.JButton searchnonacrecord;
+    private javax.swing.JButton searchroomno;
+    private javax.swing.JButton signupdata;
     private javax.swing.JTable table;
     private javax.swing.JPanel tablepanel;
     private javax.swing.JScrollPane tablescrollpane;
