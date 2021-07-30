@@ -491,13 +491,9 @@ public class AdminFrame extends javax.swing.JFrame {
                    check=true;
                    break;
                }
-               else
-               {
-                   check=false;
-               }
            }
            
-           ResultSet rs2 = s.executeQuery("select std_1_roll_no from room_allocation");
+           ResultSet rs2 = s.executeQuery("select std_1_roll_no from ac_rooms_allocation");
             while(rs2.next())
             {
                 if(rs2.getString("std_1_roll_no")==null)
@@ -511,7 +507,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
             }
             
-            ResultSet rs3 = s.executeQuery("select std_2_roll_no from room_allocation");
+            ResultSet rs3 = s.executeQuery("select std_2_roll_no from ac_rooms_allocation");
             while(rs3.next())
             {
                 if(rs3.getString("std_2_roll_no")==null)
@@ -535,13 +531,13 @@ public class AdminFrame extends javax.swing.JFrame {
                     s.executeQuery("delete from hostel_data_ac where roll_no='"+roll_no+"'");
                     if(check1)
                     {
-                        s.executeQuery("update room_allocation set std_1_roll_no = '' where std_1_roll_no = '"+roll_no+"'");
+                        s.executeQuery("update ac_rooms_allocation set std_1_roll_no = ' ' where std_1_roll_no = '"+roll_no+"'");
                         s.executeQuery("commit");
                     }
 
                     else if(check2)
                     {
-                        s.executeQuery("update room_allocation set std_2_roll_no = '' where std_2_roll_no = '"+roll_no+"'");
+                        s.executeQuery("update ac_rooms_allocation set std_2_roll_no = ' ' where std_2_roll_no = '"+roll_no+"'");
                         s.executeQuery("commit");
                     }
                     s.executeQuery("commit");
@@ -843,12 +839,7 @@ public class AdminFrame extends javax.swing.JFrame {
         
         }
         
-        else if(Pattern.matches("[a-z0-9A-Z]+", rooms))
-        {
-            JOptionPane.showMessageDialog(null, "Enter only positive numbers!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
-        else if(Integer.valueOf(rooms)<=0)
+        else
         {
             JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
         }
@@ -928,12 +919,7 @@ public class AdminFrame extends javax.swing.JFrame {
         
         }
         
-        else if(Pattern.matches("[a-z0-9A-Z]+", rooms))
-        {
-            JOptionPane.showMessageDialog(null, "Enter only positive numbers!", null, JOptionPane.WARNING_MESSAGE);
-        }
-        
-        else if(Integer.valueOf(rooms)<=0)
+        else
         {
             JOptionPane.showMessageDialog(null, "Enter only positive number!", null, JOptionPane.WARNING_MESSAGE);
         }
@@ -1055,7 +1041,7 @@ public class AdminFrame extends javax.swing.JFrame {
                }
            }
            
-           ResultSet rs2 = s.executeQuery("select std_1_roll_no from room_allocation_2");
+           ResultSet rs2 = s.executeQuery("select std_1_roll_no from non_ac_rooms_allocation");
             while(rs2.next())
             {
                 if(rs2.getString("std_1_roll_no")==null)
@@ -1069,7 +1055,7 @@ public class AdminFrame extends javax.swing.JFrame {
                 }
             }
             
-            ResultSet rs3 = s.executeQuery("select std_2_roll_no from room_allocation_2");
+            ResultSet rs3 = s.executeQuery("select std_2_roll_no from non_ac_rooms_allocation");
             while(rs3.next())
             {
                 if(rs3.getString("std_2_roll_no")==null)
@@ -1092,13 +1078,13 @@ public class AdminFrame extends javax.swing.JFrame {
                     s.executeQuery("delete from hostel_data_non_ac where roll_no='"+roll_no+"'");
                     if(check1)
                     {
-                        s.executeQuery("update room_allocation_2 set std_1_roll_no = '' where std_1_roll_no = '"+roll_no+"'");
+                        s.executeQuery("update non_ac_rooms_allocation set std_1_roll_no = ' ' where std_1_roll_no = '"+roll_no+"'");
                         s.executeQuery("commit");
                     }
 
                     else if(check2)
                     {
-                        s.executeQuery("update room_allocation_2 set std_2_roll_no = '' where std_2_roll_no = '"+roll_no+"'");
+                        s.executeQuery("update non_ac_rooms_allocation set std_2_roll_no = ' ' where std_2_roll_no = '"+roll_no+"'");
                         s.executeQuery("commit");
                     }
                     s.executeQuery("commit");
@@ -1264,7 +1250,7 @@ public class AdminFrame extends javax.swing.JFrame {
         boolean check = true;
         title.setText("Available AC Rooms");
         javax.swing.table.DefaultTableModel model;
-        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
+        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms", "Student 1", "Student 2"}));
         try{
             Connection con=new DBConnection().getConnection();
             Statement s = con.createStatement();
@@ -1276,8 +1262,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
@@ -1287,8 +1275,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
@@ -1298,8 +1288,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
@@ -1325,27 +1317,22 @@ public class AdminFrame extends javax.swing.JFrame {
         boolean check=true;
         title.setText("Available Non AC Rooms");
         javax.swing.table.DefaultTableModel model;
-        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms"}));
+        roomallocationtable.setModel(new javax.swing.table.DefaultTableModel(null,new String[] {"S.No", "Available Rooms", "Student 1", "Student 2"}));
         try{
             Connection con=new DBConnection().getConnection();
             Statement s = con.createStatement();
             
             ResultSet rs = s.executeQuery("select * from non_ac_rooms_allocation");
             while(rs.next())
-            {
-//                sno++;
-//                String str = rs.getString(1);
-//                String s_no = String.valueOf(sno);
-//                String[] data={s_no, str};
-//                model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
-//                model.addRow(data);
-                
+            {   
                 if(rs.getString("std_1_roll_no").equals(" ") && rs.getString("std_2_roll_no").equals(" "))
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
@@ -1355,8 +1342,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
@@ -1366,8 +1355,10 @@ public class AdminFrame extends javax.swing.JFrame {
                 {
                     sno++;
                     String str = rs.getString("room_no");
+                    String str1 = rs.getString("std_1_roll_no");
+                    String str2 = rs.getString("std_2_roll_no");
                     String s_no = String.valueOf(sno);
-                    String[] data={s_no, str};
+                    String[] data={s_no, str, str1, str2};
                     model=(javax.swing.table.DefaultTableModel) roomallocationtable.getModel();
                     model.addRow(data);
                     check = false;
