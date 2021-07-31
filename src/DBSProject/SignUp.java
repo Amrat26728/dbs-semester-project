@@ -374,7 +374,9 @@ public class SignUp extends javax.swing.JFrame {
 
                 if(check)
                 {
-                    new UserFrame().setVisible(true);
+                    UserFrame obj = new UserFrame();
+                    obj.setRollNo(rollnotf.getText());
+                    obj.setVisible(true);
                     this.dispose();
                 }
 

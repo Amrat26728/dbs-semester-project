@@ -417,6 +417,7 @@ public class AdminFrame extends javax.swing.JFrame {
 
         signupdata.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signupdata.setText("SignUp Data");
+        signupdata.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         signupdata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 signupdataActionPerformed(evt);
@@ -1316,7 +1317,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
             
             con.close();
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -1383,7 +1384,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
             
             con.close();
-        }catch(Exception e)
+        }catch(SQLException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -1393,67 +1394,82 @@ public class AdminFrame extends javax.swing.JFrame {
     private void searchroomnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchroomnoActionPerformed
         
         String rollno = JOptionPane.showInputDialog(null, "Enter Roll No:");
-        boolean check = false;
-        String roomno = null;
         
-        try{
-            Connection con = new DBConnection().getConnection();
-            Statement s = con.createStatement();
-            ResultSet rs = s.executeQuery("select * from ac_rooms_allocation");
-            while(rs.next())
-            {
-                if(rs.getString("std_1_roll_no").equals(rollno))
-                {
-                    roomno = rs.getString("room_no");
-                    check=true;
-                    break;
-                }
-                
-                else if(rs.getString("std_2_roll_no").equals(rollno))
-                {
-                    roomno = rs.getString("room_no");
-                    check=true;
-                    break;
-                }
-            }
+        if(rollno==null)
+        {
             
-            if(check)
-            {
-                JOptionPane.showMessageDialog(null, "Room No of "+rollno+" is "+roomno);
-            }
-            
-            else
-            {
-                ResultSet rs2 = s.executeQuery("select * from non_ac_rooms_allocation");
-                while(rs2.next())
+        }
+        
+        else if(rollno.length()<=0)
+        {
+            JOptionPane.showMessageDialog(null, "You have entered nothing!", null, JOptionPane.WARNING_MESSAGE);
+        }
+        
+        else
+        {
+            boolean check = false;
+            String roomno = null;
+
+            try{
+                Connection con = new DBConnection().getConnection();
+                Statement s = con.createStatement();
+                ResultSet rs = s.executeQuery("select * from ac_rooms_allocation");
+                while(rs.next())
                 {
-                    if(rs2.getString("std_1_roll_no").equals(rollno))
+                    if(rs.getString("std_1_roll_no").equals(rollno))
                     {
-                        roomno = rs2.getString("room_no");
-                        check = true;
+                        roomno = rs.getString("room_no");
+                        check=true;
                         break;
                     }
-                    
-                    else if(rs2.getString("std_2_roll_no").equals(rollno))
+
+                    else if(rs.getString("std_2_roll_no").equals(rollno))
                     {
-                        roomno = rs2.getString("room_no");
-                        check = true;
+                        roomno = rs.getString("room_no");
+                        check=true;
                         break;
                     }
                 }
-                
+
                 if(check)
                 {
                     JOptionPane.showMessageDialog(null, "Room No of "+rollno+" is "+roomno);
                 }
-                
+
                 else
                 {
-                    JOptionPane.showMessageDialog(null, rollno+" does not have room.");
+                    ResultSet rs2 = s.executeQuery("select * from non_ac_rooms_allocation");
+                    while(rs2.next())
+                    {
+                        if(rs2.getString("std_1_roll_no").equals(rollno))
+                        {
+                            roomno = rs2.getString("room_no");
+                            check = true;
+                            break;
+                        }
+
+                        else if(rs2.getString("std_2_roll_no").equals(rollno))
+                        {
+                            roomno = rs2.getString("room_no");
+                            check = true;
+                            break;
+                        }
+                    }
+
+                    if(check)
+                    {
+                        JOptionPane.showMessageDialog(null, "Room No of "+rollno+" is "+roomno);
+                    }
+
+                    else
+                    {
+                        JOptionPane.showMessageDialog(null, rollno+" does not have room.");
+                    }
                 }
+                con.close();
+            }catch(SQLException e){
+                JOptionPane.showConfirmDialog(null, e);
             }
-        }catch(SQLException e){
-            JOptionPane.showConfirmDialog(null, e);
         }
         
     }//GEN-LAST:event_searchroomnoActionPerformed

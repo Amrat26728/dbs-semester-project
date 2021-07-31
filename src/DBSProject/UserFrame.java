@@ -5,11 +5,19 @@
  */
 package DBSProject;
 
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author Admin
  */
 public class UserFrame extends javax.swing.JFrame {
+    
+    String rollno;
     
     /**
      * Creates new form UserFrame
@@ -19,6 +27,18 @@ public class UserFrame extends javax.swing.JFrame {
         setSize(1200,700);
         setLocationRelativeTo(null);
         setResizable(false);
+    }
+    
+    public void setRollNo(String rollno){
+        
+        this.rollno = rollno;
+        
+    }
+    
+    public String getRollNo(){
+        
+        return rollno;
+        
     }
 
     /**
@@ -33,10 +53,11 @@ public class UserFrame extends javax.swing.JFrame {
         whichroom = new javax.swing.JLabel();
         userframepanel = new javax.swing.JPanel();
         welcome = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         acroombtn = new javax.swing.JButton();
         noacroom = new javax.swing.JButton();
+        roomno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(200, 100, 600, 600));
@@ -55,16 +76,16 @@ public class UserFrame extends javax.swing.JFrame {
         userframepanel.add(welcome);
         welcome.setBounds(310, 10, 590, 80);
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/back.png"))); // NOI18N
+        back.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        back.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel1MouseClicked(evt);
+                backMouseClicked(evt);
             }
         });
-        userframepanel.add(jLabel1);
-        jLabel1.setBounds(10, 10, 30, 30);
+        userframepanel.add(back);
+        back.setBounds(10, 10, 30, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/userframe.jpg"))); // NOI18N
         userframepanel.add(jLabel2);
@@ -92,7 +113,19 @@ public class UserFrame extends javax.swing.JFrame {
             }
         });
         userframepanel.add(noacroom);
-        noacroom.setBounds(140, 340, 210, 30);
+        noacroom.setBounds(140, 330, 210, 30);
+
+        roomno.setBackground(new java.awt.Color(153, 204, 255));
+        roomno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        roomno.setText("See Your Room No");
+        roomno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        roomno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roomnoActionPerformed(evt);
+            }
+        });
+        userframepanel.add(roomno);
+        roomno.setBounds(140, 420, 210, 30);
 
         getContentPane().add(userframepanel);
         userframepanel.setBounds(0, 0, 1190, 670);
@@ -114,12 +147,80 @@ public class UserFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_noacroomActionPerformed
 
-    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+    private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
         new SignUp().setVisible(true);
         this.dispose();
         
-    }//GEN-LAST:event_jLabel1MouseClicked
+    }//GEN-LAST:event_backMouseClicked
+
+    private void roomnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roomnoActionPerformed
+        
+        boolean check = false;
+        String roomno=null;
+        
+        try{
+            Connection con = new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("select * from ac_rooms_allocation");
+            while(rs.next())
+            {
+                if(rs.getString("std_1_roll_no").equals(getRollNo()))
+                {
+                    roomno = rs.getString("room_no");
+                    check = true;
+                    break;
+                }
+                
+                else if(rs.getString("std_2_roll_no").equals(getRollNo()))
+                {
+                    roomno = rs.getString("room_no");
+                    check = true;
+                    break;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "Your room no is "+roomno);
+            }
+            
+            else
+            {
+                ResultSet rs2 = s.executeQuery("select * from non_ac_rooms_allocation");
+                while(rs2.next())
+                {
+                    if(rs2.getString("std_1_roll_no").equals(getRollNo()))
+                    {
+                        roomno = rs2.getString("room_no");
+                        check = true;
+                        break;
+                    }
+                    
+                    if(rs2.getString("std_2_roll_no").equals(getRollNo()))
+                    {
+                        roomno = rs2.getString("room_no");
+                        check = true;
+                        break;
+                    }
+                }
+                
+                if(check)
+                {
+                    JOptionPane.showMessageDialog(null, "Your room no is "+roomno);
+                }
+                
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Your room no is "+roomno);
+                }
+            }
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_roomnoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -158,9 +259,10 @@ public class UserFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acroombtn;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel back;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton noacroom;
+    private javax.swing.JButton roomno;
     private javax.swing.JPanel userframepanel;
     private javax.swing.JLabel welcome;
     private javax.swing.JLabel whichroom;
