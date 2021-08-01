@@ -402,7 +402,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(getacroomallocation);
-        getacroomallocation.setBounds(260, 500, 200, 30);
+        getacroomallocation.setBounds(260, 510, 200, 30);
 
         getnonacroomallocation.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         getnonacroomallocation.setText("Non AC Room Allocation");
@@ -413,7 +413,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(getnonacroomallocation);
-        getnonacroomallocation.setBounds(260, 550, 200, 30);
+        getnonacroomallocation.setBounds(260, 560, 200, 30);
 
         signupdata.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         signupdata.setText("SignUp Data");
@@ -424,7 +424,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(signupdata);
-        signupdata.setBounds(260, 600, 200, 30);
+        signupdata.setBounds(260, 610, 200, 30);
 
         acrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         acrooms.setText("Available AC Rooms");
@@ -435,7 +435,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(acrooms);
-        acrooms.setBounds(480, 500, 200, 30);
+        acrooms.setBounds(480, 510, 200, 30);
 
         nonacrooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nonacrooms.setText("Available Non AC Rooms");
@@ -446,7 +446,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(nonacrooms);
-        nonacrooms.setBounds(480, 550, 200, 30);
+        nonacrooms.setBounds(480, 560, 200, 30);
 
         searchroomno.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         searchroomno.setText("Search Room No");
@@ -457,7 +457,7 @@ public class AdminFrame extends javax.swing.JFrame {
             }
         });
         adminframepanel.add(searchroomno);
-        searchroomno.setBounds(480, 600, 200, 30);
+        searchroomno.setBounds(480, 610, 200, 30);
 
         getContentPane().add(adminframepanel);
         adminframepanel.setBounds(0, 0, 1190, 670);
@@ -554,6 +554,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         s.executeQuery("commit");
                     }
                     s.executeQuery("commit");
+                    con.close();
                     JOptionPane.showMessageDialog(null, "Record Deleted");
 		}
 		else if(response==JOptionPane.NO_OPTION)
@@ -1101,6 +1102,7 @@ public class AdminFrame extends javax.swing.JFrame {
                         s.executeQuery("commit");
                     }
                     s.executeQuery("commit");
+                    con.close();
                     JOptionPane.showMessageDialog(null, "Record Deleted");
 		}
 		else if(response==JOptionPane.NO_OPTION)
@@ -1251,6 +1253,7 @@ public class AdminFrame extends javax.swing.JFrame {
             {
                 JOptionPane.showMessageDialog(null, "There is no sign up data!");
             }
+            con.close();
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, e);
         }
