@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +21,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
 
     Date date=new Date();
     SimpleDateFormat dateformat=new SimpleDateFormat("dd/MMMM/YYYY");
-    
+    String Rolno;
     /**
      * Creates new form StdDataCollectionNonAC
      */
@@ -31,6 +30,14 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
         setSize(1200,700);
         setLocationRelativeTo(null);
         setResizable(false);
+    }
+    
+    public void setRollNo(String rollno){
+        this.Rolno = rollno;
+    }
+    
+    public String getRollNo(){
+        return Rolno;
     }
 
     /**
@@ -393,7 +400,7 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
         }
         
-        else
+        else if(rollnotf.getText().equals(getRollNo()))
         {
             boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false;
             String roomno=null;
@@ -523,17 +530,24 @@ public class StdDataCollectionNonAC extends javax.swing.JFrame {
                {
                    JOptionPane.showMessageDialog(null, "Pattern of the email is not correct!", null, JOptionPane.ERROR_MESSAGE);
                }
-               
+               con.close();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(null,e);
             }
+        }
+        
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Enter correct Roll No!", null, JOptionPane.ERROR_MESSAGE);
         }
       
     }//GEN-LAST:event_submitActionPerformed
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
-        
-        new UserFrame().setVisible(true);
+
+        UserFrame obj = new UserFrame();
+        obj.setRollNo(getRollNo());
+        obj.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_backMouseClicked

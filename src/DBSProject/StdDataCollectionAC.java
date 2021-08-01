@@ -13,7 +13,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import java.sql.SQLException;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -23,6 +22,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
     
     Date date=new Date();
     SimpleDateFormat dateformat=new SimpleDateFormat("dd/MMMM/YYYY");
+    String Rolno;
     /**
      * Creates new form StdDataCollectionAC
      */
@@ -32,7 +32,14 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
         setLocationRelativeTo(null);
         setResizable(false);
     }
-
+    
+    public void setRollNo(String rollno){
+        this.Rolno = rollno;
+    }
+    
+    public String getRollNo(){
+        return Rolno;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -380,7 +387,7 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null, "Something is wrong while getting data!", null, JOptionPane.ERROR_MESSAGE);
         }
         
-        else
+        else if(rollnotf.getText().equals(getRollNo()))
         {
             boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false;
             String roomno=null;
@@ -510,11 +517,16 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
                {
                    JOptionPane.showMessageDialog(null, "Pattern of the email is not correct!", null, JOptionPane.ERROR_MESSAGE);
                }
-               
+               con.close();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(null,e);
             }
         
+        }
+        
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Enter Correct Roll No!", null, JOptionPane.ERROR_MESSAGE);
         }
         
     }//GEN-LAST:event_submitActionPerformed
@@ -536,7 +548,9 @@ public class StdDataCollectionAC extends javax.swing.JFrame{
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
         
-        new UserFrame().setVisible(true);
+        UserFrame obj = new UserFrame();
+        obj.setRollNo(getRollNo());
+        obj.setVisible(true);
         this.dispose();
         
     }//GEN-LAST:event_backMouseClicked

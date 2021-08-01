@@ -341,7 +341,6 @@ public class SignUp extends javax.swing.JFrame {
         char[] ch = passwordtf.getPassword();
         String pass = String.valueOf(ch);
         boolean check = false;
-        boolean check2 = true;
         String print = "Your roll no is not registered please signup first!";
         
         if(RollNo.isEmpty() || pass.isEmpty())
@@ -382,10 +381,9 @@ public class SignUp extends javax.swing.JFrame {
 
                 else
                 {
-                    rollnotf.setText("");
-                    passwordtf.setText("");
                     JOptionPane.showMessageDialog(null, print, null, JOptionPane.ERROR_MESSAGE);
                 }
+                con.close();
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(null, e);
             }

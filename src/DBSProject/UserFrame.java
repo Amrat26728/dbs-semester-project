@@ -135,15 +135,109 @@ public class UserFrame extends javax.swing.JFrame {
 
     private void acroombtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acroombtnActionPerformed
         
-        new StdDataCollectionAC().setVisible(true);
-        this.dispose();
+        boolean check = false;
+        
+        try{
+            Connection con = new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("select roll_no from hostel_data_ac");
+            while(rs.next())
+            {
+                if(rs.getString("roll_no").equals(getRollNo()))
+                {
+                    check = true;
+                    break;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "You have already allocated room, To know your room no press \"see your room no\".");
+            }
+            
+            else
+            {
+                ResultSet rs2 = s.executeQuery("select roll_no from hostel_data_non_ac");
+                while(rs2.next())
+                {
+                    if(rs2.getString("roll_no").equals(getRollNo()))
+                    {
+                        check = true;
+                        break;
+                    }
+                }
+                
+                if(check)
+                {
+                    JOptionPane.showMessageDialog(null, "You have already allocated room, To know your room no press \"see your room no\".");
+                }
+                
+                else
+                {
+                    StdDataCollectionAC obj = new StdDataCollectionAC();
+                    obj.setRollNo(getRollNo());
+                    obj.setVisible(true);
+                    this.dispose();
+                }
+            }   
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
         
     }//GEN-LAST:event_acroombtnActionPerformed
 
     private void noacroomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noacroomActionPerformed
         
-        new StdDataCollectionNonAC().setVisible(true);
-        this.dispose();
+        boolean check = false;
+        
+        try{
+            Connection con = new DBConnection().getConnection();
+            Statement s = con.createStatement();
+            ResultSet rs = s.executeQuery("select roll_no from hostel_data_non_ac");
+            while(rs.next())
+            {
+                if(rs.getString("roll_no").equals(getRollNo()))
+                {
+                    check = true;
+                    break;
+                }
+            }
+            
+            if(check)
+            {
+                JOptionPane.showMessageDialog(null, "You have already allocated room, To know your room no press \"see room no\".");
+            }
+            
+            else
+            {
+                ResultSet rs2 = s.executeQuery("select roll_no from hostel_data_ac");
+                while(rs2.next())
+                {
+                    if(rs2.getString("roll_no").equals(getRollNo()))
+                    {
+                        check = true;
+                        break;
+                    }
+                }
+                
+                if(check)
+                {
+                    JOptionPane.showMessageDialog(null, "You have already allocated room, To know your room no press \"see room no\".");
+                }
+                
+                else
+                {
+                    StdDataCollectionNonAC obj = new StdDataCollectionNonAC();
+                    obj.setRollNo(getRollNo());
+                    obj.setVisible(true);
+                    this.dispose();
+                }
+            }   
+            con.close();
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
         
     }//GEN-LAST:event_noacroomActionPerformed
 
@@ -212,7 +306,7 @@ public class UserFrame extends javax.swing.JFrame {
                 
                 else
                 {
-                    JOptionPane.showMessageDialog(null, "Your room no is "+roomno);
+                    JOptionPane.showMessageDialog(null, "Your are not allocated any room.");
                 }
             }
             con.close();
