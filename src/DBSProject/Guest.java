@@ -395,7 +395,7 @@ public class Guest extends javax.swing.JFrame {
                         stdrollno+"','"+g1rollno+"','"+g1name+"','"+g1contact+"','"+g2rollno+"','"+g2name+"','"+g2contact+"','"+dt+"')");
                 s.executeQuery("commit");
                 con2.close();
-                JOptionPane.showMessageDialog(null, "Data Saved");
+                JOptionPane.showMessageDialog(null, "Guest data recorded.");
             }catch(SQLException e){
                 JOptionPane.showMessageDialog(null,e);
             }
@@ -405,7 +405,7 @@ public class Guest extends javax.swing.JFrame {
     }//GEN-LAST:event_allowActionPerformed
 
     private void rollnotfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rollnotfActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_rollnotfActionPerformed
 
     private void backMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backMouseClicked
@@ -634,7 +634,7 @@ public class Guest extends javax.swing.JFrame {
 
     private void g1contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g1contacttfFocusGained
         
-        if(g1contacttf.getText().equals("1234567"))
+        if(g1contacttf.getText().equals("03*********"))
         {
             g1contacttf.setText("");
             g1contacttf.setForeground(new Color(0,0,0));
@@ -646,7 +646,7 @@ public class Guest extends javax.swing.JFrame {
         
         if(g1contacttf.getText().equals(""))
         {
-            g1contacttf.setText("1234567");
+            g1contacttf.setText("03*********");
             g1contacttf.setForeground(new Color(153,153,153));
         }
         
@@ -694,7 +694,7 @@ public class Guest extends javax.swing.JFrame {
 
     private void g2contacttfFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_g2contacttfFocusGained
         
-        if(g2contacttf.getText().equals("1234567"))
+        if(g2contacttf.getText().equals("03*********"))
         {
             g2contacttf.setText("");
             g2contacttf.setForeground(new Color(0,0,0));
@@ -706,7 +706,7 @@ public class Guest extends javax.swing.JFrame {
         
         if(g2contacttf.getText().equals(""))
         {
-            g2contacttf.setText("1234567");
+            g2contacttf.setText("03*********");
             g2contacttf.setForeground(new Color(153,153,153));
         }
         
